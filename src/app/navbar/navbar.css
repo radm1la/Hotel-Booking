@@ -1,0 +1,76 @@
+section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 20px;
+  background-color: antiquewhite;
+  font-family: var(--hff);
+}
+
+.logo_sec {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--dg);
+}
+
+.logo_sec i {
+  font-size: 35px;
+}
+
+i{
+    color: var(--dg);
+}
+
+.menu {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+}
+
+.menu-left,
+.menu-center,
+.menu-right {
+  display: flex;
+  align-items: center;
+}
+
+.links_menu {
+  display: flex;
+  list-style: none;
+  gap: 100px;
+}
+
+.auth_menu {
+  display: flex;
+  list-style: none;
+  gap: 15px;
+}
+.auth{
+    display: flex;
+    gap: 10px;
+}
+
+.langs{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-left: 1px solid black;
+    padding-left: 15px;
+}
+
+.langs button {
+  background: none;
+  border: none;
+}
+
+.link,.langs button{
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+
+.link:hover, .langs button:hover{
+    color: var(--dg);
+}
