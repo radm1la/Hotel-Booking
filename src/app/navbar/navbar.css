@@ -3,7 +3,6 @@ section {
   justify-content: space-between;
   align-items: center;
   padding: 30px 20px;
-  background-color: antiquewhite;
   font-family: var(--hff);
 }
 
@@ -53,24 +52,11 @@ i{
     gap: 10px;
 }
 
-.langs{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border-left: 1px solid black;
-    padding-left: 15px;
-}
-
-.langs button {
-  background: none;
-  border: none;
-}
-
-.link,.langs button{
+.link{
     cursor: pointer;
     transition: all 0.3s ease-out;
 }
 
-.link:hover, .langs button:hover{
+.link:hover{
     color: var(--dg);
 }
