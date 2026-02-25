@@ -1,0 +1,12 @@
+<div class="header reveal-hidden" #revealElem>
+    <i class="fa-solid fa-ranking-star"></i>
+    <h1>Top Picks: According to Our Guests</h1>
+</div>
+<section>
+    @for (item of favRooms(); track $index) {
+        <div class="card">
+            <p>{{item.name}}</p>
+        </div>
+    }
+</section>
+
