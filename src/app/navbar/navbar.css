@@ -1,3 +1,19 @@
+:host {
+  display: block;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999999;
+  width: 100%;
+  transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+:host.nav-hidden {
+  transform: translateY(-100%);
+}
+
 section {
   display: flex;
   justify-content: space-between;
@@ -17,8 +33,8 @@ section {
   font-size: 35px;
 }
 
-i{
-    color: var(--dg);
+i {
+  color: var(--dg);
 }
 
 .menu {
@@ -47,16 +63,16 @@ i{
   list-style: none;
   gap: 15px;
 }
-.auth{
-    display: flex;
-    gap: 10px;
+.auth {
+  display: flex;
+  gap: 10px;
 }
 
-.link{
-    cursor: pointer;
-    transition: all 0.3s ease-out;
+.link {
+  cursor: pointer;
+  transition: all 0.3s ease-out;
 }
 
-.link:hover{
-    color: var(--dg);
+.link:hover {
+  color: var(--dg);
 }
