@@ -1,12 +1,29 @@
 <div class="header reveal-hidden" #revealElem>
-    <i class="fa-solid fa-ranking-star"></i>
-    <h1>Top Picks: According to Our Guests</h1>
+  <i class="fa-solid fa-ranking-star"></i>
+  <h1>Top Picks: According to Our Guests</h1>
 </div>
-<section>
+<div class="container">
+  <section class="room_cards">
     @for (item of favRooms(); track $index) {
-        <div class="card">
-            <p>{{item.name}}</p>
+      <div class="card">
+        <img [src]="item.images[randomImgIndex % item.images.length]?.source" />
+        <div class="overlay">
+          <div class="info">
+            <h3>{{ item.name }}</h3>
+            <p>From ${{ item.pricePerNight }} / Night</p>
+            <div class="line"></div>
+            <p>Capacity: {{ item.maximumGuests }}</p>
+            <button>Room Details <i class="fa-solid fa-arrow-right-long"></i></button>
+          </div>
         </div>
+      </div>
     }
-</section>
-
+  </section>
+  <section class="dots">
+    @for (item of favRooms(); track $index) {
+      <button
+        class="dot"
+      ></button>
+    }
+  </section>
+</div>

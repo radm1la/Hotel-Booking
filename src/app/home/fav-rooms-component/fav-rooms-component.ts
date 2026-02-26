@@ -9,6 +9,7 @@ import { Helper } from '../../helper';
 })
 export class FavRoomsComponent implements AfterViewInit {
   @ViewChild('revealElem') revealElem! : ElementRef;
+  randomImgIndex = Math.floor(Math.random()*6)
 
   constructor(private renderer:Renderer2,private service:Helper){
     this.fetchFavRooms();
@@ -39,7 +40,7 @@ export class FavRoomsComponent implements AfterViewInit {
       next:(data)=>{
         console.log(data);
         
-        this.favRooms.set(data.slice(0,5));
+        this.favRooms.set(data.slice(0,6));
       }
     })
   }
