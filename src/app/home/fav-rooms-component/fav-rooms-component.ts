@@ -27,7 +27,7 @@ export class FavRoomsComponent implements AfterViewInit {
         }
       });
     },{
-      threshold:0.1
+      threshold:1
     })
 
     observer.observe(this.revealElem.nativeElement);
