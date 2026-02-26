@@ -44,4 +44,12 @@ export class FavRoomsComponent implements AfterViewInit {
       }
     })
   }
+
+  currentIndex = signal(0);
+  goToSlide(i:number){
+    this.currentIndex.set(i);
+  } 
+  getTransform(){
+    return `translateX(-${this.currentIndex() * 470}px)`;
+  }
 }

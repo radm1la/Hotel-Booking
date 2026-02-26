@@ -4,7 +4,8 @@
 }
 
 .header {
-  padding-top: 100px;
+  padding-top: 80px;
+  padding-bottom: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,8 +13,8 @@
   color: var(--dg);
   gap: 40px;
   transition:
-    opacity 1.2s ease-out,
-    transform 1.2s cubic-bezier(0.2, 1, 0.3, 1);
+    opacity 1.5s ease-out,
+    transform 1.5s cubic-bezier(0.2, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
@@ -35,7 +36,23 @@
   transform: translateY(0);
 }
 
+.container {
+  overflow: hidden;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  
+}
+
+.room_cards {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
 .card {
+  flex: 0 0 450px;
   position: relative;
   width: 450px;
   height: 515px;
@@ -154,42 +171,52 @@
   transform: translateX(8px);
 }
 
-.dots{
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 30px 10px;
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 30px 10px;
+  width: 100%;
+  justify-content: center;
 }
 
-.dot{
-    width: 5px;
-    height: 5px;
-    background-color: var(--dg);
-    border: none;
-    border-radius: 50%;
-    position: relative;
-    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-    cursor: pointer;
+.dot {
+  width: 5px;
+  height: 5px;
+  background-color: var(--dg);
+  border: none;
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  cursor: pointer;
 }
 
-.dot::after{
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    width: 10px;
-    height: 10px;
-    border: 1px solid var(--dg);
-    border-radius: 50%;
-    opacity: 0;
-    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+.dot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--dg);
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.dot:hover{
-    transform: scale(2);
+.dot:hover {
+  transform: scale(2);
 }
 
-.dot:hover::after{
-    opacity: 1;
+.dot:hover::after {
+  opacity: 1;
+}
+
+.dot.active {
+  transform: scale(2);
+}
+
+.dot.active::after {
+  opacity: 1;
 }

@@ -3,7 +3,7 @@
   <h1>Top Picks: According to Our Guests</h1>
 </div>
 <div class="container">
-  <section class="room_cards">
+  <section class="room_cards" [style.transform] = "getTransform()">
     @for (item of favRooms(); track $index) {
       <div class="card">
         <img [src]="item.images[randomImgIndex % item.images.length]?.source" />
@@ -21,9 +21,13 @@
   </section>
   <section class="dots">
     @for (item of favRooms(); track $index) {
-      <button
+     @if ($index <= favRooms().length - 3) {
+       <button
         class="dot"
+        [class.active]="currentIndex() === $index"
+        (click)="goToSlide($index)"
       ></button>
+     }
     }
   </section>
 </div>
