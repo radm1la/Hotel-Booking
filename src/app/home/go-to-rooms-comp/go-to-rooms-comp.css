@@ -35,6 +35,19 @@ section {
   gap: 15px;
   padding-right: 150px;
   justify-content: center;
+  transition:
+    opacity 1.5s ease,
+    transform 1.5s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.reveal-hidden {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 h4,
