@@ -3,22 +3,35 @@
   <h1>Top Picks: According to Our Guests</h1>
 </div>
 <div class="container">
-  <section class="room_cards" [style.transform] = "getTransform()">
-    @for (item of favRooms(); track $index) {
-      <div class="card">
-        <img [src]="item.images[randomImgIndex % item.images.length]?.source" />
-        <div class="overlay">
-          <div class="info">
-            <h3>{{ item.name }}</h3>
-            <p>From ${{ item.pricePerNight }} / Night</p>
-            <div class="line"></div>
-            <p>Capacity: {{ item.maximumGuests }}</p>
-            <button>Room Details <i class="fa-solid fa-arrow-right-long"></i></button>
+  <div class="carousel-main">
+    
+    <button class="nav-btn prev" (click)="prev()" [disabled]="currentIndex() === 0">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+
+    <section class="room_cards" [style.transform]="getTransform()">
+      @for (item of favRooms(); track $index) {
+        <div class="card">
+          <img [src]="item.images[randomImgIndex % item.images.length]?.source" />
+          <div class="overlay">
+            <div class="info">
+              <h3>{{ item.name }}</h3>
+              <p>From ${{ item.pricePerNight }} / Night</p>
+              <div class="line"></div>
+              <p>Capacity: {{ item.maximumGuests }}</p>
+              <button>Room Details <i class="fa-solid fa-arrow-right-long"></i></button>
+            </div>
           </div>
         </div>
-      </div>
-    }
-  </section>
+      }
+    </section>
+
+    <button class="nav-btn next" (click)="next()" [disabled]="currentIndex() >= favRooms().length - 3">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+    
+  </div>
+
   <section class="dots">
     @for (item of favRooms(); track $index) {
      @if ($index <= favRooms().length - 3) {

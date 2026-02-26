@@ -52,4 +52,16 @@ export class FavRoomsComponent implements AfterViewInit {
   getTransform(){
     return `translateX(-${this.currentIndex() * 470}px)`;
   }
+
+  next() {
+    if (this.currentIndex() < this.favRooms().length - 3) {
+      this.currentIndex.update(v => v + 1);
+    }
+  }
+
+  prev() {
+    if (this.currentIndex() > 0) {
+      this.currentIndex.update(v => v - 1);
+    }
+  }
 }
