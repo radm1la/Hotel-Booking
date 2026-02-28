@@ -1,10 +1,11 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { Helper } from '../helper';
 import { ActivatedRoute } from '@angular/router';
+import { HeroComponentRooms } from "./hero-component-rooms/hero-component-rooms";
 
 @Component({
   selector: 'app-rooms',
-  imports: [],
+  imports: [HeroComponentRooms],
   templateUrl: './rooms.html',
   styleUrl: './rooms.css',
 })
