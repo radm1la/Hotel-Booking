@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { Helper } from '../../helper';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-cities',
@@ -28,5 +29,6 @@ export class Cities {
 
   selectCity(name:string){
     this.selectedCity.set(name);
+    this.service.cityName.next(name);
   }
 }
