@@ -1,4 +1,4 @@
-import { Component, inject, NgZone, OnInit, signal } from '@angular/core';
+import { Component, HostListener, inject, NgZone, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Navbar } from "./navbar/navbar";
 import Lenis from 'lenis';
@@ -32,4 +32,16 @@ ngOnInit() {
       requestAnimationFrame(raf);
     });
   }
+
+  showButton = false;
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.showButton = window.scrollY > 300;
+  }
+
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
 }
