@@ -7,10 +7,11 @@ import {
   signal,
   ViewChild,
 } from '@angular/core';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-go-to-rooms-comp',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './go-to-rooms-comp.html',
   styleUrl: './go-to-rooms-comp.css',
   standalone: true,
