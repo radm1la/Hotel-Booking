@@ -1,12 +1,12 @@
 <section>
-  <div class="parallax-bg" [style.transform]="">
+  <div class="parallax-bg" [style.transform]="getHeroTransform()">
     <img
       src="https://www.sleepermagazine.com/wp-content/uploads/2021/02/hilton-santa-monica-1.jpg"
       alt=""
     />
   </div>
 
-  <div class="content">
+  <div class="content" [style.transform]="getTextTransform()">
     <h1>Discover Your Perfect Stay</h1>
     <p>
      Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, voluptatibus.

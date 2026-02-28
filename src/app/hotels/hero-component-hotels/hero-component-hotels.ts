@@ -11,7 +11,7 @@ export class HeroComponentHotels {
 
   @HostListener('window:scroll',[])
   onWindowScroll(){
-    this.scrollY.set(window.screenY);
+    this.scrollY.set(window.scrollY);
   }
 
   getHeroTransform(){
