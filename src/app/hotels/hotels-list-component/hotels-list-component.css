@@ -47,7 +47,7 @@ section{
   transition: transform 0.5s ease;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
   align-items: center;
 }
 
@@ -69,7 +69,7 @@ section{
 }
 
 .info p {
-  font-size: 20px;
+  font-size: 16px;
   font-family: var(--pff);
   font-weight: 200;
 }
@@ -78,7 +78,7 @@ section{
   background: none;
   border: 1px solid var(--w);
   color: #fff;
-  font-size: 20px;
+  font-size: 18px;
   padding: 10px 30px;
   cursor: pointer;
   position: relative;
