@@ -10,4 +10,8 @@ export class Helper {
   getAllRooms(){
     return this.http.get<any[]>("https://hotelbooking.stepprojects.ge/api/Rooms/GetAll");
   }
+
+  getAllCities(){
+    return this.http.get("https://hotelbooking.stepprojects.ge/api/Hotels/GetCities");
+  }
 }
