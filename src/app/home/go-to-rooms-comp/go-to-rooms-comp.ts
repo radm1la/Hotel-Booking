@@ -1,8 +1,10 @@
 import {
   AfterViewInit,
   Component,
+  computed,
   ElementRef,
   HostListener,
+  OnInit,
   Renderer2,
   signal,
   ViewChild,
@@ -16,10 +18,14 @@ import { RouterLink } from "@angular/router";
   styleUrl: './go-to-rooms-comp.css',
   standalone: true,
 })
-export class GoToRoomsComp implements AfterViewInit {
+export class GoToRoomsComp implements AfterViewInit, OnInit {
   @ViewChild('textElem') textElem!: ElementRef;
 
   scrollY = signal(0);
+
+  ngOnInit(): void {
+    this.scrollY.set(window.scrollY)
+  }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -61,13 +67,13 @@ export class GoToRoomsComp implements AfterViewInit {
     return elementCenter - viewportCenter;
   }
 
-  getParaOne() {
-    const offset = this.getOffset() * 0.05;
-    return `translate3d(0, ${offset}px, 0)`;
-  }
+  paraOneTransform = computed(() => {
+    const relativeScroll = this.scrollY() - 1200; 
+    return `translate3d(0, ${relativeScroll * 0.05}px, 0)`;
+  });
 
-  getParaTwo() {
-    const offset = this.getOffset() * -0.1;
-    return `translate3d(0, ${offset}px, 0)`;
-  }
+  paraTwoTransform = computed(() => {
+    const relativeScroll = this.scrollY() - 1200;
+    return `translate3d(0, ${relativeScroll * -0.1}px, 0)`;
+  });
 }

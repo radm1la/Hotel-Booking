@@ -1,9 +1,10 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { Helper } from '../../helper';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-hotels-list-component',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './hotels-list-component.html',
   styleUrl: './hotels-list-component.css',
 })
@@ -34,7 +35,6 @@ export class HotelsListComponent implements OnInit {
     if(cityName === 'all'){
       this.service.getAllHotels().subscribe({
         next:(data)=>{
-          console.log(data);
           this.hotels.set(data);
         },
         error:(bad)=>{
@@ -44,7 +44,6 @@ export class HotelsListComponent implements OnInit {
     }else{
       this.service.getHotelsByCity(cityName).subscribe({
         next:(data)=>{
-          console.log(data);
           this.hotels.set(data);
         },
         error:(bad)=>{

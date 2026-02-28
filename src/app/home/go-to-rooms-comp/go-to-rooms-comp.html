@@ -8,10 +8,10 @@
       quis ea natus ad quasi. Quasi dicta nobis asperiores fuga illo placeat fugit repudiandae ex
       eum.
     </p>
-    <button routerLink="/rooms">VIEW ROOMS</button>
+    <button [routerLink]="['/rooms',-1]">VIEW ROOMS</button>
   </div>
   <div class="images">
-    <img src="assets/images/home_img2.jpg" class="img1" [style.transform]="getParaOne()" />
-    <img src="assets/images/home_img1.jpg" class="img2" [style.transform]="getParaTwo()" />
+    <img src="assets/images/home_img2.jpg" class="img1" [style.transform]="paraOneTransform()" />
+    <img src="assets/images/home_img1.jpg" class="img2" [style.transform]="paraTwoTransform()" />
   </div>
 </section>

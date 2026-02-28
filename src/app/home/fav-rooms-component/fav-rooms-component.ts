@@ -38,8 +38,6 @@ export class FavRoomsComponent implements AfterViewInit {
   fetchFavRooms(){
     this.service.getAllRooms().subscribe({
       next:(data)=>{
-        console.log(data);
-        
         this.favRooms.set(data.slice(0,6));
       },
       error:(badData)=>{

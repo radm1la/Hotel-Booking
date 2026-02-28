@@ -6,5 +6,5 @@ import { Rooms } from './rooms/rooms';
 export const routes: Routes = [
     {path:"",component:Home},
     {path:"hotels",component:Hotels},
-    {path:"rooms",component:Rooms}
+    {path:"rooms/:hotelId",component:Rooms}
 ];

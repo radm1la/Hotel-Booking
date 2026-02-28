@@ -25,4 +25,8 @@ export class Helper {
   getAllHotels(){
     return this.http.get("https://hotelbooking.stepprojects.ge/api/Hotels/GetAll");
   }
+
+  getHotelById(id:number){
+    return this.http.get(`https://hotelbooking.stepprojects.ge/api/Hotels/GetHotel/${id}`)
+  }
 }
