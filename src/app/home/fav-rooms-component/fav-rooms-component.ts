@@ -41,6 +41,9 @@ export class FavRoomsComponent implements AfterViewInit {
         console.log(data);
         
         this.favRooms.set(data.slice(0,6));
+      },
+      error:(badData)=>{
+        console.log("Error loading rooms. ",badData);
       }
     })
   }

@@ -1,0 +1,25 @@
+.radio-inputs {
+  list-style: none;
+  display: flex;
+  background-color: var(--dg);
+  width: 100%;
+  padding: 30px 0 0 70px;
+}
+
+.tab .name {
+  display: flex;
+  cursor: pointer;
+  padding: 15px 40px;
+  color: var(--w);
+  position: relative;
+  transition: all 0.2s ease;
+  font-family: var(--hff);
+  font-size: 20px;
+}
+
+.tab.active .name {
+  background-color: var(--w);
+  color: var(--dg);
+  
+}
+

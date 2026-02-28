@@ -1,0 +1,15 @@
+<ul class="radio-inputs">
+  <li class="tab" 
+      [class.active]="selectedCity() === 'all'" 
+      (click)="selectCity('all')">
+    <span class="name">All Cities</span>
+  </li>
+
+  @for (item of cities(); track item) {
+    <li class="tab" 
+        [class.active]="selectedCity() === item" 
+        (click)="selectCity(item)">
+      <span class="name">{{ item }}</span>
+    </li>
+  }
+</ul>
