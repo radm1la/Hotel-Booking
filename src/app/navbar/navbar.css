@@ -70,9 +70,15 @@ i {
 
 .link {
   cursor: pointer;
-  transition: all 0.3s ease-out;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .link:hover {
   color: var(--dg);
+  font-weight: bold;
+}
+
+.links_menu .link.active-link {
+  color: var(--dg) !important;
+  font-weight: bold;
 }

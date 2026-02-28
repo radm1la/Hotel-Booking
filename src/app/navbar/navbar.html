@@ -9,15 +9,20 @@
 
     <div class="menu-center">
       <ul class="links_menu">
-        <li routerLink="/" class="link">HOME</li>
-        <li routerLink="/hotels" class="link">HOTELS</li>
-        <li routerLink="/rooms" class="link">ROOMS</li>
+        <li routerLink="/" class="link" [class.active-link]="isActive('/')">HOME</li>
+
+        <li routerLink="/hotels" class="link" [class.active-link]="isActive('/hotels')">HOTELS</li>
+
+        <li [routerLink]="['/rooms', -1]" class="link" [class.active-link]="isActive('/rooms')">
+          ROOMS
+        </li>
       </ul>
     </div>
 
     <div class="menu-right">
       <ul class="auth_menu">
-        <li class="link"><i class="fa-regular fa-circle-user"></i> Login</li>/
+        <li class="link"><i class="fa-regular fa-circle-user"></i> Login</li>
+        /
         <li class="link">Register</li>
       </ul>
     </div>

@@ -1,5 +1,6 @@
 import { Component, HostListener, signal } from '@angular/core';
-import { RouterLink } from "@angular/router";
+import { NavigationEnd, Router, RouterLink } from "@angular/router";
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -25,5 +26,22 @@ export class Navbar {
     }
 
     this.lastScrollY = currentScroll;
+  }
+
+  currentUrl: string = '';
+
+  constructor(private router: Router) {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: any) => {
+      this.currentUrl = event.urlAfterRedirects;
+    });
+  }
+
+  isActive(path: string): boolean {
+    if (path === '/') {
+      return this.currentUrl === '/';
+    }
+    return this.currentUrl.includes(path);
   }
 }
