@@ -3,10 +3,11 @@ import { Helper } from '../helper';
 import { ActivatedRoute } from '@angular/router';
 import { HeroComponentRooms } from "./hero-component-rooms/hero-component-rooms";
 import { ValuesRoomsComp } from "./values-rooms-comp/values-rooms-comp";
+import { FilteringComponent } from "./filtering-component/filtering-component";
 
 @Component({
   selector: 'app-rooms',
-  imports: [HeroComponentRooms, ValuesRoomsComp],
+  imports: [HeroComponentRooms, ValuesRoomsComp, FilteringComponent],
   templateUrl: './rooms.html',
   styleUrl: './rooms.css',
 })
