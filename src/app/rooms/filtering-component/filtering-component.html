@@ -31,13 +31,29 @@
         
     </select>
     </div>
-    <div class="area">
-        
-    </div>
-    <div class="area">
+   <div class="area">
+    <label>CHECK IN</label>
+    <input type="date" [(ngModel)]="checkInDate" name="checkIn" (change)="validateDates()" [min]="today">
+</div>
 
-    </div>
+<div class="area">
+    <label>CHECK OUT</label>
+    <input type="date" [(ngModel)]="checkOutDate" name="checkOut" (change)="validateDates()" [min]="today">
+</div>
     <div class="area">
-
+        <label for="guests">GUESTS</label>
+    <input 
+        type="number" 
+        id="guests" 
+        name="maximumGuests" 
+        [(ngModel)]="maximumGuests" 
+        min="1" 
+        max="6"
+        class="guest-input"
+        (change)="validateGuests()">
+    </div>
+    <div class="buttons">
+        <button type="submit" class="filter-btn">FILTER</button>
+        <button type="reset" class="reset-btn">RESET</button>
     </div>
 </form>
