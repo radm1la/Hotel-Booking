@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {MatSliderModule} from '@angular/material/slider';
+import { Helper } from '../../helper';
 
 @Component({
   selector: 'app-filtering-component',
@@ -8,15 +9,18 @@ import {MatSliderModule} from '@angular/material/slider';
   templateUrl: './filtering-component.html',
   styleUrl: './filtering-component.css',
 })
-export class FilteringComponent {
+export class FilteringComponent implements OnInit{
+  roomTypes = signal<any>([]);
+  selectedRoomType = "0";
+  constructor(private service:Helper){}
+
+  ngOnInit(): void {
+    this.fetchRoomTypes();
+  }
   //price slider logic
   minPrice = 100;
   maxPrice = 800;
   priceLimit = 1000;
-
-  changePrice(){
-
-  }
 
   validateInputs(){
     if(this.minPrice < 0){
@@ -28,5 +32,17 @@ export class FilteringComponent {
     if(this.minPrice > this.maxPrice){
       this.minPrice = this.maxPrice;
     }
+  }
+
+  //room types
+  fetchRoomTypes(){
+    this.service.getRoomTypes().subscribe({
+      next:(data:any)=>{
+        this.roomTypes.set(data);
+      },
+      error:(bad)=>{
+        console.log("Error loading room types. ",bad);
+      }
+    })
   }
 }

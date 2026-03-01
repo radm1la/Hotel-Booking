@@ -1,6 +1,6 @@
 <form>
     <div class="area">
-        <label>Price Range</label>
+        <label>PRICE RANGE</label>
         <mat-slider min="0" [max]="priceLimit" step="10" discrete="">
             <input matSliderStartThumb [(ngModel)]="minPrice" (ngModelChange)="validateInputs()" name="sliderMin">
             <input matSliderEndThumb [(ngModel)]="maxPrice" (ngModelChange)="validateInputs()" name="sliderMax">
@@ -8,20 +8,31 @@
 
         <div class="man_inputs">
             <div class="field">
-                <span>Min</span>
+                <span>MIN</span>
                 <input type="number" [(ngModel)]="minPrice" (change)="validateInputs()" name="inputMin">
             </div>
             <div class="field">
-                <span>Max</span>
+                <span>MAX</span>
                 <input type="number" [(ngModel)] = "maxPrice" (change)="validateInputs()" name="inputMax">
             </div>
         </div>
     </div>
     <div class="area">
+       <label for="roomType">ROOM TYPE</label>
+    <select 
+        id="roomType" 
+        name="roomType" 
+        [(ngModel)]="selectedRoomType" 
+        >
+        <option value="0" disabled selected>ALL ROOMS</option>
+        @for (item of roomTypes(); track $index) {
+            <option [value]="item.id"> {{item.name}} </option>
+        }
         
+    </select>
     </div>
     <div class="area">
-
+        
     </div>
     <div class="area">
 
