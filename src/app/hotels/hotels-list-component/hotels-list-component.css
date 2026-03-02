@@ -5,6 +5,7 @@ section{
   align-items: center;
   justify-content: space-evenly;
   gap: 60px;
+  min-height: 520px;
 }
 
 .card {
