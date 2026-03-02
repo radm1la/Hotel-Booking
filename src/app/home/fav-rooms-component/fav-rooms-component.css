@@ -41,7 +41,6 @@
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  
 }
 
 .carousel-main {
@@ -62,7 +61,7 @@
   height: 45px;
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
   color: var(--dg);
 }
@@ -73,13 +72,16 @@
 }
 
 .nav-btn:disabled {
-  opacity: 0; 
+  opacity: 0;
   pointer-events: none;
 }
 
-.prev { left: 15px; }
-.next { right: 15px; }
-
+.prev {
+  left: 15px;
+}
+.next {
+  right: 15px;
+}
 
 .room_cards {
   display: flex;
@@ -256,4 +258,16 @@
 
 .dot.active::after {
   opacity: 1;
+}
+
+.error_msg,
+.loading_msg {
+  text-align: center;
+  padding: 50px;
+  font-family: var(--hff);
+  color: var(--lb);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-size: 14px;
+  border: 1px solid var(--lb);
 }

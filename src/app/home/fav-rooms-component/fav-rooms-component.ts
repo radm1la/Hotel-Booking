@@ -11,6 +11,10 @@ export class FavRoomsComponent implements AfterViewInit {
   @ViewChild('revealElem') revealElem! : ElementRef;
   randomImgIndex = Math.floor(Math.random()*6)
 
+  isLoading = true;
+  dataLoaded:boolean = false;
+  errorMsg ="";
+
   constructor(private renderer:Renderer2,private service:Helper){
     this.fetchFavRooms();
   }
@@ -36,11 +40,18 @@ export class FavRoomsComponent implements AfterViewInit {
   //--
   favRooms = signal<any>([]);
   fetchFavRooms(){
+    this.isLoading = true;
     this.service.getAllRooms().subscribe({
       next:(data)=>{
         this.favRooms.set(data.slice(0,6));
+        this.dataLoaded = true;
+        this.isLoading = false;
+        this.errorMsg = "";
       },
       error:(badData)=>{
+        this.isLoading = false;
+        this.dataLoaded = false;
+        this.errorMsg = "We're having trouble reaching the server. Please try again later.";
         console.log("Error loading rooms. ",badData);
       }
     })

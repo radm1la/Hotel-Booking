@@ -4,7 +4,8 @@
   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim quas ipsum nostrum exercitationem nulla. Reprehenderit?</p>
 </div>
 <div class="container">
-  <div class="carousel-main">
+  @if(dataLoaded){
+    <div class="carousel-main">
     
     <button class="nav-btn prev" (click)="prev()" [disabled]="currentIndex() === 0">
       <i class="fa-solid fa-chevron-left"></i>
@@ -44,4 +45,10 @@
      }
     }
   </section>
+  }@else if (isLoading) {
+    <h1 class="loading_msg">Searching for our top picks...</h1>
+  }
+  @else {
+    <h1 class="error_msg"> {{errorMsg}} </h1>
+  }
 </div>
