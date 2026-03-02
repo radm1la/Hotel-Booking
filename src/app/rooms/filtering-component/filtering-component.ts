@@ -25,7 +25,7 @@ export class FilteringComponent implements OnInit {
     this.fetchRoomTypes();
   }
   //price slider logic
-  minPrice = 100;
+  minPrice = 0;
   maxPrice = 800;
   priceLimit = 1000;
 
