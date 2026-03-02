@@ -1,18 +1,26 @@
 <section>
-  @for (item of hotels(); track $index) {
-    <div class="card">
-          <img [src]="item.featuredImage" />
-          <div class="overlay">
-            <div class="info">
-              <h3>{{ item.name }}</h3>
-              <div class="line"></div>
-              <p>
-                <i class="fa-solid fa-location-dot"></i>
-                {{item.address}}
-              </p>
-              <button [routerLink]="['/rooms',item.id]">VIEW ROOMS<i class="fa-solid fa-arrow-right-long"></i></button>
-            </div>
+  @if (service.dataLoaded()) {
+    @for (item of hotels(); track $index) {
+      <div class="card">
+        <img [src]="item.featuredImage" />
+        <div class="overlay">
+          <div class="info">
+            <h3>{{ item.name }}</h3>
+            <div class="line"></div>
+            <p>
+              <i class="fa-solid fa-location-dot"></i>
+              {{ item.address }}
+            </p>
+            <button [routerLink]="['/rooms', item.id]">
+              VIEW ROOMS<i class="fa-solid fa-arrow-right-long"></i>
+            </button>
           </div>
         </div>
+      </div>
+    }
+  } @else if (service.isLoading()) {
+    <h1 class="loading_msg">Searching for hotels...</h1>
+  } @else if (service.errorMsg()) {
+    <h1 class="error_msg">{{ service.errorMsg() }}</h1>
   }
 </section>

@@ -1,6 +1,6 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { Helper } from '../../helper';
-import { RouterLink } from "@angular/router";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-hotels-list-component',
@@ -12,7 +12,7 @@ export class HotelsListComponent implements OnInit {
   city = signal<string>('');
   hotels = signal<any>([]);
 
-  constructor(private service: Helper) {}
+  constructor(public service: Helper) {}
 
   ngOnInit() {
     this.fetchHotels('all');
@@ -31,25 +31,33 @@ export class HotelsListComponent implements OnInit {
     });
   }
 
-  fetchHotels(cityName:string) {
-    if(cityName === 'all'){
+  fetchHotels(cityName: string) {
+    this.service.startLoading();
+
+    if (cityName === 'all') {
       this.service.getAllHotels().subscribe({
-        next:(data)=>{
+        next: (data) => {
           this.hotels.set(data);
+          this.service.setSuccess();
         },
-        error:(bad)=>{
-          console.log("Error loading hotels. ",bad);
-        }
-      })
-    }else{
+        error: (bad) => {
+          this.service.setError(
+            "We're having trouble reaching the server. Please try again later.",
+          );
+        },
+      });
+    } else {
       this.service.getHotelsByCity(cityName).subscribe({
-        next:(data)=>{
+        next: (data) => {
           this.hotels.set(data);
+          this.service.setSuccess();
         },
-        error:(bad)=>{
-          console.log("Error loading hotels. ",bad);
-        }
-      })
+        error: (bad) => {
+          this.service.setError(
+            "We're having trouble reaching the server. Please try again later.",
+          );
+        },
+      });
     }
   }
 }
