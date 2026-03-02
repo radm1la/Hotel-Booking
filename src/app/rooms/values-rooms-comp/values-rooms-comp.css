@@ -60,6 +60,8 @@ section{
 h2{
     font-family: var(--hff);
     font-weight: 200;
+    text-align: center;
+    letter-spacing: 1.2px;
 }
 
 p{
