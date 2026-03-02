@@ -32,31 +32,25 @@ export class HotelsListComponent implements OnInit {
   }
 
   fetchHotels(cityName: string) {
-    this.service.startLoading();
-
     if (cityName === 'all') {
       this.service.getAllHotels().subscribe({
-        next: (data) => {
+        next: (data:any) => {
           this.hotels.set(data);
-          this.service.setSuccess();
-        },
-        error: (bad) => {
-          this.service.setError(
-            "We're having trouble reaching the server. Please try again later.",
-          );
-        },
+
+          if(data.length === 0){
+            this.service.setError("No hotels found.")
+          }
+        }
       });
     } else {
       this.service.getHotelsByCity(cityName).subscribe({
-        next: (data) => {
+        next: (data:any) => {
           this.hotels.set(data);
-          this.service.setSuccess();
-        },
-        error: (bad) => {
-          this.service.setError(
-            "We're having trouble reaching the server. Please try again later.",
-          );
-        },
+
+          if(data.length === 0){
+            this.service.setError("No hoetsls found.")
+          }
+        }
       });
     }
   }

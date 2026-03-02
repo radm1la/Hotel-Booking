@@ -1,4 +1,12 @@
-import { AfterViewInit, Component, ElementRef, Renderer2, signal, ViewChild, viewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Renderer2,
+  signal,
+  ViewChild,
+  viewChild,
+} from '@angular/core';
 import { Helper } from '../../helper';
 
 @Component({
@@ -8,63 +16,67 @@ import { Helper } from '../../helper';
   styleUrl: './fav-rooms-component.css',
 })
 export class FavRoomsComponent implements AfterViewInit {
-  @ViewChild('revealElem') revealElem! : ElementRef;
-  randomImgIndex = Math.floor(Math.random()*6)
+  @ViewChild('revealElem') revealElem!: ElementRef;
+  randomImgIndex = Math.floor(Math.random() * 6);
 
-  constructor(private renderer:Renderer2,public service:Helper){
+  constructor(
+    private renderer: Renderer2,
+    public service: Helper,
+  ) {
     this.fetchFavRooms();
   }
 
   ngAfterViewInit() {
-    const observer = new IntersectionObserver((entries)=>{
-      entries.forEach((entry)=>{
-        if(entry.isIntersecting){
-          this.renderer.addClass(this.revealElem.nativeElement,'reveal-visible');
-          this.renderer.removeClass(this.revealElem.nativeElement, 'reveal-hidden');
-        }else{
-          this.renderer.removeClass(this.revealElem.nativeElement, 'reveal-visible');
-        this.renderer.addClass(this.revealElem.nativeElement, 'reveal-hidden');
-        }
-      });
-    },{
-      threshold:0.9
-    })
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            this.renderer.addClass(this.revealElem.nativeElement, 'reveal-visible');
+            this.renderer.removeClass(this.revealElem.nativeElement, 'reveal-hidden');
+          } else {
+            this.renderer.removeClass(this.revealElem.nativeElement, 'reveal-visible');
+            this.renderer.addClass(this.revealElem.nativeElement, 'reveal-hidden');
+          }
+        });
+      },
+      {
+        threshold: 0.9,
+      },
+    );
 
     observer.observe(this.revealElem.nativeElement);
   }
 
   //--
   favRooms = signal<any>([]);
-  fetchFavRooms(){
-    this.service.startLoading();
+  fetchFavRooms() {
     this.service.getAllRooms().subscribe({
-      next:(data)=>{
-        this.favRooms.set(data.slice(0,6));
-        this.service.setSuccess();
-      },
-      error:(badData)=>{
-        this.service.setError("We're having trouble reaching the server. Please try again later.");
+      next: (data) => {
+        this.favRooms.set(data.slice(0, 6));
+        if (data.length === 0) {
+          this.service.setError("We couldn't find any top picks right now.");
+        }
       }
-    })
+    });
   }
 
   currentIndex = signal(0);
-  goToSlide(i:number){
+  goToSlide(i: number) {
     this.currentIndex.set(i);
-  } 
-  getTransform(){
+  }
+  getTransform() {
     return `translateX(-${this.currentIndex() * 470}px)`;
   }
 
   next() {
     if (this.currentIndex() < this.favRooms().length - 3) {
-      this.currentIndex.update(v => v + 1);
+      this.currentIndex.update((v) => v + 1);
     }
   }
 
   prev() {
     if (this.currentIndex() > 0) {
-      this.currentIndex.update(v => v - 1);
+      this.currentIndex.update((v) => v - 1);
     }
   }
 }

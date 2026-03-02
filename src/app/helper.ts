@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpContext } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { Subject } from 'rxjs';
+import { IS_SILENT } from './interceptors/app-interceptor';
 
 @Injectable({
   providedIn: 'root',
@@ -36,7 +37,9 @@ export class Helper {
   }
 
   getAllCities(){
-    return this.http.get("https://hotelbooking.stepprojects.ge/api/Hotels/GetCities");
+    return this.http.get("https://hotelbooking.stepprojects.ge/api/Hotels/GetCities", {
+    context: new HttpContext().set(IS_SILENT, true)
+  });
   }
 
   getHotelsByCity(city:string){
