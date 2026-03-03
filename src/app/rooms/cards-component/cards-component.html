@@ -1,4 +1,4 @@
-@for (item of roomsList(); track $index) {
+@for (item of visibleRooms(); track $index) {
   <div class="card">
     <div class="img">
       <img [src]="item.images[$index % item.images.length]?.source" />
@@ -12,3 +12,4 @@
     <button>BOOK NOW</button>
   </div>
 }
+<div #anchor class="scroll-anchor"></div>

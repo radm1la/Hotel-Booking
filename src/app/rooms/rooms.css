@@ -1,3 +1,12 @@
 .rooms-list-container{
     padding: 50px 200px;
+    min-height: 560px;
+}
+
+.no_rooms{
+    width: 100%;
+    text-align: center;
+    font-size: 26px;
+    color: var(--lb);
+    text-transform: uppercase;
 }
