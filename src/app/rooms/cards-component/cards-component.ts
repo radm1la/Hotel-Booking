@@ -8,6 +8,7 @@ import { Component, effect, input } from '@angular/core';
 })
 export class CardsComponent {
   roomsList = input<any[]>([]);
+  randomImgIndex = Math.floor(Math.random() * 6);
 
   constructor(){
     effect(() => {
