@@ -21,7 +21,7 @@
               <p>From ${{ item.pricePerNight }} / Night</p>
               <div class="line"></div>
               <p>Capacity: {{ item.maximumGuests }}</p>
-              <button>Room Details <i class="fa-solid fa-arrow-right-long"></i></button>
+              <button [routerLink]="['/room',item.id]" >Room Details <i class="fa-solid fa-arrow-right-long"></i></button>
             </div>
           </div>
         </div>

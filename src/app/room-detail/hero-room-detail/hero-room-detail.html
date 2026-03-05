@@ -1,0 +1,16 @@
+<section class="intro">
+  <img [src]="roomInfo().images[randomIndex]?.source" />
+
+  <div class="text">
+    <h1> {{roomInfo().name}} </h1>
+    <p>- Great choice for a relaxing vacation for families with children or a group of friends -</p>
+  </div>
+</section>
+<section class="mini_nav">
+   <ul>
+    <li><a href="">DESCRIPTION</a></li>
+    <li><a href="">BOOK ROOM</a></li>
+   </ul>
+   <span class="price_cont">$ <span class="price"> {{roomInfo().pricePerNight}} </span> PER NIGHT</span>
+</section>
+

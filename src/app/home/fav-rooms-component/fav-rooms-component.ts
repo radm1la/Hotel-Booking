@@ -8,10 +8,11 @@ import {
   viewChild,
 } from '@angular/core';
 import { Helper } from '../../helper';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-fav-rooms-component',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './fav-rooms-component.html',
   styleUrl: './fav-rooms-component.css',
 })
