@@ -1,0 +1,13 @@
+:host{
+    display: block;
+    padding: 100px 200px;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.feature {
+  width: 50%; 
+}

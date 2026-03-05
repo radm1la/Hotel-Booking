@@ -48,7 +48,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 30px 200px;
+    padding: 40px 200px;
     background-color: var(--db);
     font-family: var(--hff);
 }
@@ -63,7 +63,7 @@
 ul li a{
     text-decoration: none;
     color: #fff;
-    font-size: 18px;
+    font-size: 20px;
     letter-spacing: 1.6px;
 }
 
