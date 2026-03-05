@@ -11,6 +11,7 @@ import { Helper } from '../../helper';
 })
 export class FilteringComponent implements OnInit {
   filteredResults = output<any[]>();
+  resetTriggered = output<void>();
   today = new Date().toISOString().split('T')[0];
   priceLimit = 1000;
   roomTypes = signal<any>([]);
@@ -83,6 +84,7 @@ export class FilteringComponent implements OnInit {
       checkIn: '',
       checkOut: '',
     });
-    this.filter();
+
+    this.resetTriggered.emit();
   }
 }

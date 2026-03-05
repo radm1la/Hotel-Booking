@@ -1,57 +1,65 @@
 <form [formGroup]="formInfo" (ngSubmit)="filter()">
-    <div class="area">
-        <label>PRICE RANGE</label>
-        <mat-slider min="0" [max]="priceLimit" step="10" discrete="">
-            <input matSliderStartThumb formControlName="priceFrom">
-            <input matSliderEndThumb formControlName="priceTo">
-        </mat-slider>
+  <div class="area">
+    <label>PRICE RANGE</label>
+    <mat-slider min="0" [max]="priceLimit" step="10" discrete>
+      <input matSliderStartThumb formControlName="priceFrom" />
+      <input matSliderEndThumb formControlName="priceTo" />
+    </mat-slider>
 
-        <div class="man_inputs">
-            <div class="field">
-                <span>MIN</span>
-                <input type="number" formControlName="priceFrom">
-            </div>
-            <div class="field">
-                <span>MAX</span>
-                <input type="number" formControlName="priceTo" >
-            </div>
-        </div>
+    <div class="man_inputs">
+      <div class="field">
+        <span>MIN</span>
+        <input
+          type="number"
+          [value]="formInfo.get('priceFrom')?.value"
+          (change)="formInfo.patchValue({ priceFrom: +$any($event.target).value })"
+          min="0"
+          [max]="formInfo.get('priceTo')?.value"
+        />
+      </div>
+      <div class="field">
+        <span>MAX</span>
+        <input
+          type="number"
+          [value]="formInfo.get('priceTo')?.value"
+          (change)="formInfo.patchValue({ priceTo: +$any($event.target).value })"
+          [min]="formInfo.get('priceFrom')?.value"
+          [max]="priceLimit"
+        />
+      </div>
     </div>
-    <div class="area select_area">
-       <label for="roomType">ROOM TYPE</label>
-    <select 
-        id="roomType" 
-        formControlName="roomTypeId"
-        >
-        <option [value]="0" selected>ALL ROOMS</option>
-        @for (item of roomTypes(); track $index) {
-            <option [value]="item.id"> {{item.name}} </option>
-        }
-        
+  </div>
+  <div class="area select_area">
+    <label for="roomType">ROOM TYPE</label>
+    <select id="roomType" formControlName="roomTypeId">
+      <option [value]="0" selected>ALL ROOMS</option>
+      @for (item of roomTypes(); track $index) {
+        <option [value]="item.id">{{ item.name }}</option>
+      }
     </select>
-    </div>
-   <div class="area">
+  </div>
+  <div class="area">
     <label>CHECK IN</label>
-    <input type="date" formControlName="checkIn" [min]="today">
-</div>
+    <input type="date" formControlName="checkIn" [min]="today" />
+  </div>
 
-<div class="area">
+  <div class="area">
     <label>CHECK OUT</label>
-    <input type="date" formControlName="checkOut" [min]="today">
-</div>
-    <div class="area">
-        <label for="guests">GUESTS</label>
-    <input 
-        type="number" 
-        id="guests" 
-        formControlName="maximumGuests"
-        min="1" 
-        max="6"
-        class="guest-input"
-        >
-    </div>
-    <div class="buttons">
-        <button type="submit" class="filter-btn">FILTER</button>
-        <button type="reset" class="reset-btn" (click)="resetFilters()">RESET</button>
-    </div>
+    <input type="date" formControlName="checkOut" [min]="today" />
+  </div>
+  <div class="area">
+    <label for="guests">GUESTS</label>
+    <input
+      type="number"
+      id="guests"
+      formControlName="maximumGuests"
+      min="1"
+      max="6"
+      class="guest-input"
+    />
+  </div>
+  <div class="buttons">
+    <button type="submit" class="filter-btn">FILTER</button>
+    <button type="reset" class="reset-btn" (click)="resetFilters()">RESET</button>
+  </div>
 </form>

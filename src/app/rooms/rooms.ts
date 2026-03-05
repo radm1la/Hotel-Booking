@@ -1,10 +1,10 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { Helper } from '../helper';
 import { ActivatedRoute } from '@angular/router';
-import { HeroComponentRooms } from "./hero-component-rooms/hero-component-rooms";
-import { ValuesRoomsComp } from "./values-rooms-comp/values-rooms-comp";
-import { FilteringComponent } from "./filtering-component/filtering-component";
-import { CardsComponent } from "./cards-component/cards-component";
+import { HeroComponentRooms } from './hero-component-rooms/hero-component-rooms';
+import { ValuesRoomsComp } from './values-rooms-comp/values-rooms-comp';
+import { FilteringComponent } from './filtering-component/filtering-component';
+import { CardsComponent } from './cards-component/cards-component';
 
 @Component({
   selector: 'app-rooms',
@@ -14,6 +14,7 @@ import { CardsComponent } from "./cards-component/cards-component";
 })
 export class Rooms implements OnInit {
   rooms = signal<any>([]);
+  hotelId = -1;
 
   constructor(
     public service: Helper,
@@ -22,19 +23,20 @@ export class Rooms implements OnInit {
 
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('hotelId')) || -1;
+    this.hotelId = -1;
     this.fetchRooms(id);
   }
 
   fetchRooms(id: number) {
     if (id === -1) {
       this.service.getAllRooms().subscribe({
-        next: (data:any) => {
+        next: (data: any) => {
           this.rooms.set(data);
-        }
+        },
       });
     } else {
       this.service.getHotelById(id).subscribe({
-        next: (data:any) => {
+        next: (data: any) => {
           this.rooms.set(data.rooms);
         },
         error: (bad) => {
@@ -43,4 +45,8 @@ export class Rooms implements OnInit {
       });
     }
   }
+
+  onReset() {
+  this.fetchRooms(this.hotelId); 
+}
 }

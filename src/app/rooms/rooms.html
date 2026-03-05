@@ -1,6 +1,6 @@
 <app-hero-component-rooms></app-hero-component-rooms>
 <app-values-rooms-comp></app-values-rooms-comp>
-<app-filtering-component (filteredResults)="rooms.set($event)"></app-filtering-component>
+<app-filtering-component (filteredResults)="rooms.set($event)"  (resetTriggered)="onReset()"></app-filtering-component>
 <section class="rooms-list-container">
   @if (service.isLoading()) {
     <h1 class="loading_msg">
