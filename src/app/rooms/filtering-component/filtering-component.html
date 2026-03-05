@@ -1,19 +1,19 @@
-<form>
+<form [formGroup]="formInfo" (ngSubmit)="filter()">
     <div class="area">
         <label>PRICE RANGE</label>
         <mat-slider min="0" [max]="priceLimit" step="10" discrete="">
-            <input matSliderStartThumb [(ngModel)]="minPrice" (ngModelChange)="validateInputs()" name="sliderMin">
-            <input matSliderEndThumb [(ngModel)]="maxPrice" (ngModelChange)="validateInputs()" name="sliderMax">
+            <input matSliderStartThumb formControlName="priceFrom">
+            <input matSliderEndThumb formControlName="priceTo">
         </mat-slider>
 
         <div class="man_inputs">
             <div class="field">
                 <span>MIN</span>
-                <input type="number" [(ngModel)]="minPrice" (change)="validateInputs()" name="inputMin">
+                <input type="number" formControlName="priceFrom">
             </div>
             <div class="field">
                 <span>MAX</span>
-                <input type="number" [(ngModel)] = "maxPrice" (change)="validateInputs()" name="inputMax">
+                <input type="number" formControlName="priceTo" >
             </div>
         </div>
     </div>
@@ -21,10 +21,9 @@
        <label for="roomType">ROOM TYPE</label>
     <select 
         id="roomType" 
-        name="roomType" 
-        [(ngModel)]="selectedRoomType" 
+        formControlName="roomTypeId"
         >
-        <option value="0" disabled selected>ALL ROOMS</option>
+        <option [value]="0" selected>ALL ROOMS</option>
         @for (item of roomTypes(); track $index) {
             <option [value]="item.id"> {{item.name}} </option>
         }
@@ -33,27 +32,26 @@
     </div>
    <div class="area">
     <label>CHECK IN</label>
-    <input type="date" [(ngModel)]="checkInDate" name="checkIn" (change)="validateDates()" [min]="today">
+    <input type="date" formControlName="checkIn" [min]="today">
 </div>
 
 <div class="area">
     <label>CHECK OUT</label>
-    <input type="date" [(ngModel)]="checkOutDate" name="checkOut" (change)="validateDates()" [min]="today">
+    <input type="date" formControlName="checkOut" [min]="today">
 </div>
     <div class="area">
         <label for="guests">GUESTS</label>
     <input 
         type="number" 
         id="guests" 
-        name="maximumGuests" 
-        [(ngModel)]="maximumGuests" 
+        formControlName="maximumGuests"
         min="1" 
         max="6"
         class="guest-input"
-        (change)="validateGuests()">
+        >
     </div>
     <div class="buttons">
         <button type="submit" class="filter-btn">FILTER</button>
-        <button type="reset" class="reset-btn">RESET</button>
+        <button type="reset" class="reset-btn" (click)="resetFilters()">RESET</button>
     </div>
 </form>

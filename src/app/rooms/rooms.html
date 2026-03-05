@@ -1,6 +1,6 @@
 <app-hero-component-rooms></app-hero-component-rooms>
 <app-values-rooms-comp></app-values-rooms-comp>
-<app-filtering-component></app-filtering-component>
+<app-filtering-component (filteredResults)="rooms.set($event)"></app-filtering-component>
 <section class="rooms-list-container">
   @if (service.isLoading()) {
     <h1 class="loading_msg">
@@ -11,7 +11,7 @@
   } @else if (service.dataLoaded()) {
     <app-cards-component [roomsList]="rooms()"></app-cards-component>
 
-    @if (rooms().length === 0) {
+    @if (service.dataLoaded() && rooms().length === 0) {
       <p class="no_rooms">No rooms found matching your criteria.</p>
     }
   }
