@@ -1,7 +1,5 @@
 <section class="intro">
-  @if (roomInfo()) {
-    <img [src]="roomInfo().images[randomIndex()]?.source" />
-  }
+  <img [src]="roomInfo().images[randomIndex()]?.source" />
   <div class="text">
     <h1>{{ roomInfo().name }}</h1>
     <p>- Great choice for a relaxing vacation for families with children or a group of friends -</p>
