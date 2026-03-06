@@ -1,13 +1,65 @@
-:host{
-    display: block;
-    padding: 100px 200px;
+:host {
+  display: block;
+  padding: 100px 200px;
 }
 
-.features {
+.features_conatiner{
   display: flex;
-  flex-wrap: wrap;
 }
 
-.feature {
-  width: 50%; 
+.field{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 40px;
+}
+
+
+h1{
+  font-family: var(--hff);
+  font-weight: 300;
+}
+
+p,span{
+  font-family: var(--pff);
+  font-weight: 300;
+}
+
+.descr{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.descr h1{
+  font-size: 22px;
+  letter-spacing: 2px;
+}
+
+.descr p{
+  color: darkgrey;
+}
+
+.feat{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-left: 70px;
+}
+
+.features{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.feature{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+}
+
+.feature i{
+  color: var(--lb);
 }
