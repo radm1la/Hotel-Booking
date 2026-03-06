@@ -1,10 +1,2 @@
-@if (roomInfo()) {
-  <app-hero-room-detail 
-    [roomInfo]="roomInfo()" 
-    [randomIndex]="randomIndex">
-  </app-hero-room-detail>
-
-  <app-description 
-    [roomInfo]="roomInfo()">
-  </app-description>
-}
+<app-hero-room-detail [roomInfo]="roomInfo()" [randomIndex]="randomIndex" ></app-hero-room-detail>
+<app-description [roomInfo]="roomInfo()"></app-description>

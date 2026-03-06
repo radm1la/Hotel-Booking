@@ -2,6 +2,7 @@
   width: 100%;
   height: 70vh;
   position: relative;
+  background-color: var(--db);
 }
 
 .intro::before {
