@@ -1,8 +1,8 @@
 import { Component, signal } from '@angular/core';
-import { HeroRoomDetail } from "./hero-room-detail/hero-room-detail";
 import { Description } from "./description/description";
 import { Helper } from '../helper';
 import { ActivatedRoute } from '@angular/router';
+import { HeroRoomDetail } from './hero-room-detail/hero-room-detail';
 
 @Component({
   selector: 'app-room-detail',
