@@ -31,6 +31,6 @@ export class Description {
 
   triggerAnimation() {
     this.isAnimating.set(true);
-    setTimeout(() => this.isAnimating.set(false), 500);
+    setTimeout(() => this.isAnimating.set(false), 1200);
   }
 }
