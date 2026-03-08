@@ -1,1 +1,38 @@
-<p>login works!</p>
+<div class="container">
+  <div class="login_form">
+    <div class="logo">
+      <i class="fa-solid fa-mountain-city"></i>
+      <h1>GeoNest</h1>
+    </div>
+    <div class="header">
+      <h1>Login</h1>
+      <p>Sign in to your account!</p>
+    </div>
+    <form>
+      <div class="area">
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email" />
+      </div>
+      <div class="area">
+        <label for="pass">Password</label>
+        <input type="text" id="pass" formControlName="password" />
+      </div>
+      <p>Forget password?</p>
+      <button>LOGIN</button>
+    </form>
+    <p>You not registered? <a routerLink="/signup">Create an account</a></p>
+  </div>
+  <div class="img_area">
+    <h1>What do you get as a member?</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae fuga aperiam facere at
+      nostrum ipsa, nemo quod magnam fugit autem.
+    </p>
+    <ul>
+      <li><i class="fa-solid fa-circle-check"></i> Lorem ipsum dolor sit amet.</li>
+      <li><i class="fa-solid fa-circle-check"></i> Lorem ipsum dolor sit amet.</li>
+      <li><i class="fa-solid fa-circle-check"></i> Lorem ipsum dolor sit amet.</li>
+    </ul>
+  </div>
+  <div class="close"><i class="fa-solid fa-xmark"></i></div>
+</div>

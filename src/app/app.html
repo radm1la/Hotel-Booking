@@ -1,6 +1,8 @@
-<app-navbar></app-navbar>
-<div class="to_up" [class.show]="showButton" (click)="scrollToTop()">
-  <i class="fa-solid fa-angle-up"></i>
-</div>
+@if (!hideUi) {
+  <app-navbar></app-navbar>
+  <div class="to_up" [class.show]="showButton" (click)="scrollToTop()">
+    <i class="fa-solid fa-angle-up"></i>
+  </div>
+}
 
 <router-outlet></router-outlet>
