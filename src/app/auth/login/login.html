@@ -8,17 +8,35 @@
       <h1>Login</h1>
       <p>Sign in to your account!</p>
     </div>
-    <form>
+    <form [formGroup]="loginInfo" (ngSubmit)="login()">
       <div class="area">
-        <label for="email">Email *</label>
+        <label for="email">Email <span class="req">*</span></label>
         <input type="email" id="email" formControlName="email" />
+        @if (loginInfo.get('email')?.dirty && loginInfo.get('email')?.invalid) {
+          <p class="input-hint">
+            <i class="fa-solid fa-circle-info"></i>
+            Please enter a valid email address (e.g., name@hotel.com).
+          </p>
+        }
       </div>
       <div class="area">
-        <label for="pass">Password *</label>
-        <input type="text" id="pass" formControlName="password" />
+        <label for="pass">Password <span class="req">*</span></label>
+        <input type="password" id="pass" formControlName="password" />
+        @if (loginInfo.get('password')?.dirty && loginInfo.get('password')?.invalid) {
+          <p class="input-hint">
+            <i class="fa-solid fa-circle-info"></i>
+            Password must be at least 8 characters long.
+          </p>
+        }
       </div>
       <p>Forget password?</p>
-      <button>LOGIN</button>
+      @if (errorMessage) {
+        <p class="error-message">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          {{ errorMessage }}
+        </p>
+      }
+      <button [disabled]="loginInfo.invalid">LOGIN</button>
     </form>
     <p>You not registered? <a routerLink="/signup">Create an account</a></p>
   </div>
@@ -35,6 +53,6 @@
       <li><i class="fa-solid fa-circle-check"></i> Lorem ipsum dolor sit amet.</li>
     </ul>
   </div>
-  
-  <div class="close"><i class="fa-solid fa-xmark"></i></div>
+
+  <div class="close" (click)="close()"><i class="fa-solid fa-xmark"></i></div>
 </div>

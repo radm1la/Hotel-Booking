@@ -65,4 +65,8 @@ export class Helper {
   postFilteredData(info:any){
     return this.http.post("https://hotelbooking.stepprojects.ge/api/Rooms/GetFiltered",info);
   }
+
+  postLogin(info:any){
+    return this.http.post("https://api.everrest.educata.dev/auth/sign_in",info);
+  }
 }
