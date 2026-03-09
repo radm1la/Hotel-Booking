@@ -2,11 +2,11 @@ import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Helper } from '../../helper';
 import { CookieService } from 'ngx-cookie-service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,RouterLink],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -49,6 +49,7 @@ export class Login {
 
   close() {
     this.router.navigate(['/']);
+    //!an ukan dabruneba
   }
 
     fetchUser(){

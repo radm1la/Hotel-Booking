@@ -1,1 +1,118 @@
-<p>signup works!</p>
+<div class="container">
+  <div class="signup_form">
+    <div class="logo">
+      <i class="fa-solid fa-mountain-city"></i>
+      <h1>GeoNest</h1>
+    </div>
+    <div class="header">
+      <h1>Sign up</h1>
+      <p>Register for a hotel account to enjoy exclusive privileges!</p>
+    </div>
+
+    <form [formGroup]="formInfo" (ngSubmit)="register()">
+      <div class="big_field">
+        <div class="field">
+          <div class="area">
+            <label for="firstName">First Name <span class="req">*</span></label>
+            <input type="text" id="firstName" formControlName="firstName" />
+            @if (hasError('firstName', 'required')) {
+              <p class="input-hint"><i class="fa-solid fa-circle-info"></i> Name is required</p>
+            }
+          </div>
+          <div class="area">
+            <label for="lastName">Last Name <span class="req">*</span></label>
+            <input type="text" id="lastName" formControlName="lastName" />
+            @if (hasError('lastName', 'required')) {
+              <p class="input-hint">
+                <i class="fa-solid fa-circle-info"></i> Last name is required
+              </p>
+            }
+          </div>
+          <div class="area">
+            <label for="email">Email <span class="req">*</span></label>
+            <input type="email" id="email" formControlName="email" />
+            @if (hasError('email', 'email')) {
+              <p class="input-hint">
+                <i class="fa-solid fa-circle-info"></i> Please enter a valid email
+              </p>
+            }
+          </div>
+          <div class="area">
+            <label for="password">Password <span class="req">*</span></label>
+            <input type="password" id="password" formControlName="password" />
+            @if (hasError('password', 'minlength')) {
+              <p class="input-hint">
+                <i class="fa-solid fa-circle-info"></i> Min 8 characters required
+              </p>
+            }
+          </div>
+          <div class="area">
+            <label for="age">Age <span class="req">*</span></label>
+            <input type="number" id="age" formControlName="age" />
+            @if (hasError('age', 'min')) {
+              <p class="input-hint">
+                <i class="fa-solid fa-circle-info"></i> You must be at least 18 years old.
+              </p>
+            }
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="area">
+            <label for="address">Address <span class="req">*</span></label>
+            <input type="text" id="address" formControlName="address" />
+          </div>
+          <div class="area">
+            <label for="phone">Phone <span class="req">*</span></label>
+            <input type="text" id="phone" formControlName="phone" />
+            @if (hasError('phone', 'pattern')) {
+              <p class="input-hint">
+                <i class="fa-solid fa-circle-info"></i> Format: +995XXXXXXXXX
+              </p>
+            }
+          </div>
+          <div class="area">
+            <label for="zipcode">Zip Code <span class="req">*</span></label>
+            <input type="text" id="zipcode" formControlName="zipcode" />
+          </div>
+          <div class="area">
+            <label for="avatar">Avatar URL</label>
+            <input type="text" id="avatar" formControlName="avatar" />
+            @if (hasError('avatar', 'required')) {
+              <p class="input-hint"><i class="fa-solid fa-circle-info"></i> Avatar is required.</p>
+            } @else if (hasError('avatar', 'pattern')) {
+              <p class="input-hint">
+                <i class="fa-solid fa-circle-info"></i> URL must end with .jpg, .png, or .webp
+              </p>
+            }
+          </div>
+          <div class="area">
+            <label for="gender">Gender <span class="req">*</span></label>
+            <select id="gender" formControlName="gender">
+              <option value="">Choose Gender</option>
+              <option value="MALE">Male</option>
+              <option value="FEMALE">Female</option>
+              <option value="OTHER">Other</option>
+            </select>
+            @if (hasError('gender', 'required')) {
+              <p class="input-hint">
+                <i class="fa-solid fa-circle-info"></i> Please select a gender
+              </p>
+            }
+          </div>
+        </div>
+      </div>
+       @if (errorMessage) {
+        <p class="error-message">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          {{ errorMessage }}
+        </p>
+      }
+      <button [disabled]="formInfo.invalid">REGISTER</button>
+    </form>
+
+    <p>Do you already have an account? <a routerLink="/login">Sign in</a></p>
+  </div>
+
+  <div class="close" (click)="close()"><i class="fa-solid fa-xmark"></i></div>
+</div>

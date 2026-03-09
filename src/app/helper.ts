@@ -74,6 +74,9 @@ export class Helper {
   postLogin(info:any){
     return this.http.post("https://api.everrest.educata.dev/auth/sign_in",info);
   }
+  postSignUp(info:any){
+    return this.http.post("https://api.everrest.educata.dev/auth/sign_up",info);
+  }
 
   getUser(){
     return this.http.get("https://api.everrest.educata.dev/auth",{headers:{Authorization: `Bearer ${this.cookie.get("user_token")}`}});
