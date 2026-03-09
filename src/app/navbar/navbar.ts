@@ -2,6 +2,8 @@ import { Component, HostListener, signal } from '@angular/core';
 import { NavigationEnd, Router, RouterLink } from "@angular/router";
 import { filter } from 'rxjs';
 import { Helper } from '../helper';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @Component({
   selector: 'app-navbar',
@@ -23,6 +25,11 @@ export class Navbar {
     })
   }
 
+  logOut(){
+    this.service.isLogged.next(false);
+    this.cookie.delete("user_token");
+  }
+
   @HostListener('window:scroll',[])
   onWindowScroll(){
     const currentScroll = window.scrollY;
@@ -38,7 +45,7 @@ export class Navbar {
 
   currentUrl: string = '';
 
-  constructor(private router: Router,private service:Helper) {
+  constructor(private router: Router,private service:Helper,private cookie:CookieService) {
     this.checkAuth();
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
