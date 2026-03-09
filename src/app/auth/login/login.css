@@ -265,3 +265,11 @@ display: none;
   align-items: center;
   gap: 6px;
 }
+
+.verif {
+  color: gold;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}

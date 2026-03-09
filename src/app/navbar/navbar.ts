@@ -1,6 +1,7 @@
 import { Component, HostListener, signal } from '@angular/core';
 import { NavigationEnd, Router, RouterLink } from "@angular/router";
 import { filter } from 'rxjs';
+import { Helper } from '../helper';
 
 @Component({
   selector: 'app-navbar',
@@ -30,7 +31,7 @@ export class Navbar {
 
   currentUrl: string = '';
 
-  constructor(private router: Router) {
+  constructor(private router: Router,private service:Helper) {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: any) => {
@@ -44,4 +45,6 @@ export class Navbar {
     }
     return this.currentUrl.includes(path);
   }
+
+
 }

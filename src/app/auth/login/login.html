@@ -31,7 +31,7 @@
       </div>
       <p>Forget password?</p>
       @if (errorMessage) {
-        <p class="error-message">
+        <p [className]="errorMessage.includes('Verification') ? 'verif' : 'error-message'">
           <i class="fa-solid fa-circle-exclamation"></i>
           {{ errorMessage }}
         </p>

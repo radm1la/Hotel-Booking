@@ -36,7 +36,7 @@ export class Login {
       this.service.postLogin(this.loginInfo.value).subscribe({
         next: (data: any) => {
           this.cookie.set('user_token', data.access_token);
-          this.close();
+          this.fetchUser();
         },
         error: (err) => {
           console.log(err);
@@ -49,5 +49,24 @@ export class Login {
 
   close() {
     this.router.navigate(['/']);
+  }
+
+    fetchUser(){
+    this.service.getUser().subscribe(
+      {
+        next:(data)=>{
+          console.log(data);
+          this.close();
+        },
+        error:(err)=>{
+          console.log(err);
+          
+          if(err.status == 409){
+            this.errorMessage = "Verification email has been sent to you email.";
+            this.cdr.detectChanges();
+          }
+        }
+      }
+    )
   }
 }

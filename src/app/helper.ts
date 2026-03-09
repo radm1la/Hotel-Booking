@@ -2,16 +2,18 @@ import { HttpClient, HttpContext } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { Subject } from 'rxjs';
 import { IS_SILENT } from './interceptors/app-interceptor';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Helper {
+
   isLoading = signal(false);
   dataLoaded = signal(false);
   errorMsg = signal("");
 
-  constructor(private http:HttpClient){}
+  constructor(private http:HttpClient,private cookie:CookieService){}
 
   public cityName = new Subject<string>();
 
@@ -68,5 +70,9 @@ export class Helper {
 
   postLogin(info:any){
     return this.http.post("https://api.everrest.educata.dev/auth/sign_in",info);
+  }
+
+  getUser(){
+    return this.http.get("https://api.everrest.educata.dev/auth",{headers:{Authorization: `Bearer ${this.cookie.get("user_token")}`}});
   }
 }
