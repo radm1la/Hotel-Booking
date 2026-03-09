@@ -3,10 +3,11 @@ import { Description } from "./description/description";
 import { Helper } from '../helper';
 import { ActivatedRoute } from '@angular/router';
 import { HeroRoomDetail } from './hero-room-detail/hero-room-detail';
+import { BookRoom } from "./book-room/book-room";
 
 @Component({
   selector: 'app-room-detail',
-  imports: [HeroRoomDetail, Description],
+  imports: [HeroRoomDetail, Description, BookRoom],
   templateUrl: './room-detail.html',
   styleUrl: './room-detail.css',
 })

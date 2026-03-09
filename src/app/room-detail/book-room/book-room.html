@@ -1,1 +1,45 @@
-<p>book-room works!</p>
+<div class="booking-container">
+  <div class="calendar-visual">
+    <h3>Occupancy Calendar</h3>
+    <div class="calendar-grid">
+      @for(day of [].constructor(31); track $index) {
+        <div class="day" [class.booked]="bookedDatesSet.has('2026-03-' + ($index + 1 | number:'2.0-0'))">
+          {{ $index + 1 }}
+        </div>
+      }
+    </div>
+    <p class="note"><span class="red-box"></span> Red dates are already booked.</p>
+  </div>
+
+  <div class="booking-form-area">
+    <h3>Reserve Your Stay</h3>
+    <form [formGroup]="bookingForm" (ngSubmit)="submitBooking()">
+      <div class="input-group">
+        <label>Check-in</label>
+        <input type="date" formControlName="checkInDate">
+      </div>
+      
+      <div class="input-group">
+        <label>Check-out</label>
+        <input type="date" formControlName="checkOutDate">
+      </div>
+
+      <div class="input-group">
+        <label>Full Name</label>
+        <input type="text" formControlName="customerName" placeholder="Your name">
+      </div>
+
+      <div class="input-group">
+        <label>Phone Number</label>
+        <input type="text" formControlName="customerPhone" placeholder="+995...">
+      </div>
+
+      <div class="price-display">
+        <span>Total Price:</span>
+        <strong>${{ totalPrice() }}</strong>
+      </div>
+
+      <button type="submit" [disabled]="bookingForm.invalid">CONFIRM BOOKING</button>
+    </form>
+  </div>
+</div>

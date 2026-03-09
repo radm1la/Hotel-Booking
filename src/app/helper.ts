@@ -78,7 +78,15 @@ export class Helper {
     return this.http.post("https://api.everrest.educata.dev/auth/sign_up",info);
   }
 
+  postBooking(info:any){
+    return this.http.post("https://hotelbooking.stepprojects.ge/api/Booking",info);
+  }
+
   getUser(){
     return this.http.get("https://api.everrest.educata.dev/auth",{headers:{Authorization: `Bearer ${this.cookie.get("user_token")}`}});
+  }
+
+  getBooking(){
+    return this.http.get("https://hotelbooking.stepprojects.ge/api/Booking");
   }
 }

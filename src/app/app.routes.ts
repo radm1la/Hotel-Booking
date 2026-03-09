@@ -6,6 +6,7 @@ import { NotFoundComponent } from './not-found-component/not-found-component';
 import { RoomDetail } from './room-detail/room-detail';
 import { Login } from './auth/login/login';
 import { Signup } from './auth/signup/signup';
+import { MyBooking } from './my-booking/my-booking';
 
 export const routes: Routes = [
     {path:"",component:Home},
@@ -14,5 +15,6 @@ export const routes: Routes = [
     {path:"room/:roomId",component:RoomDetail},
     {path:"login",component:Login},
     {path:"signup",component:Signup},
+    {path:"mybooking",component:MyBooking},
     {path:"**",component:NotFoundComponent}
 ];

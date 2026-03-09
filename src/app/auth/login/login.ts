@@ -34,7 +34,7 @@ export class Login {
     this.errorMessage = '';
     if (this.loginInfo.valid) {
       this.service.postLogin(this.loginInfo.value).subscribe({
-        next: (data: any) => {
+        next: (data: any) => {          
           this.cookie.set('user_token', data.access_token);
           this.fetchUser();
         },
@@ -55,8 +55,9 @@ export class Login {
     fetchUser(){
     this.service.getUser().subscribe(
       {
-        next:(data)=>{
+        next:(data:any)=>{
           console.log(data);
+          localStorage.setItem("user_id",data._id)
           this.service.isLogged.next(true);
           this.close();
         },

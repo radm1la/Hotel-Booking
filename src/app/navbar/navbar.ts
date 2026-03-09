@@ -33,6 +33,7 @@ export class Navbar {
   logOut() {
     this.service.isLogged.next(false);
     this.cookie.delete('user_token');
+    localStorage.removeItem("user_id");
   }
 
   @HostListener('window:scroll', [])

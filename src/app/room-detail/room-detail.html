@@ -1,14 +1,9 @@
 @if (roomInfo() && roomInfo().images) {
-  
-  <app-hero-room-detail 
-    [roomInfo]="roomInfo()" 
-    [randomIndex]="randomIndex">
-  </app-hero-room-detail>
+  <app-hero-room-detail [roomInfo]="roomInfo()" [randomIndex]="randomIndex"> </app-hero-room-detail>
 
-  <app-description 
-    [roomInfo]="roomInfo()">
-  </app-description>
+  <app-description [roomInfo]="roomInfo()"> </app-description>
 
+  <app-book-room [roomInfo]="roomInfo()"></app-book-room>
 } @else {
   <div class="full-page-loader">
     <div class="spinner"></div>
