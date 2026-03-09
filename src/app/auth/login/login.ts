@@ -56,6 +56,7 @@ export class Login {
       {
         next:(data)=>{
           console.log(data);
+          this.service.isLogged.next(true);
           this.close();
         },
         error:(err)=>{

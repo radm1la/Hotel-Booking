@@ -1,6 +1,6 @@
 import { HttpClient, HttpContext } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { IS_SILENT } from './interceptors/app-interceptor';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -8,12 +8,15 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root',
 })
 export class Helper {
+  isLogged = new BehaviorSubject<boolean>(false);
 
   isLoading = signal(false);
   dataLoaded = signal(false);
   errorMsg = signal("");
 
-  constructor(private http:HttpClient,private cookie:CookieService){}
+  constructor(private http:HttpClient,private cookie:CookieService){
+    this.isLogged.next(cookie.check("user_token"));
+  }
 
   public cityName = new Subject<string>();
 

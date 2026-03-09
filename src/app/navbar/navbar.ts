@@ -15,6 +15,13 @@ import { Helper } from '../helper';
 export class Navbar {
   isHidden = signal(false);
   private lastScrollY = 0;
+  isLogged = false;
+
+  checkAuth(){
+    this.service.isLogged.subscribe((data)=>{
+      this.isLogged = data;
+    })
+  }
 
   @HostListener('window:scroll',[])
   onWindowScroll(){
@@ -32,6 +39,7 @@ export class Navbar {
   currentUrl: string = '';
 
   constructor(private router: Router,private service:Helper) {
+    this.checkAuth();
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: any) => {
