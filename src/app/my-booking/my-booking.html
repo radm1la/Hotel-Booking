@@ -6,16 +6,24 @@
 } @else {
   <div class="booking-results">
     @if (booking().length > 0) {
+      <!-- profile -->
       <div class="profile">
-        <div class="field">
+        <div class="field pfp">
           <img [src]="userInfo().avatar" alt="user_pfp" />
-          <p class="username"> {{userInfo().firstName}} {{userInfo().lastName}}  </p>
+          <p class="username">{{ userInfo().firstName }} {{ userInfo().lastName }}</p>
         </div>
-        <div class="field">
-          <p>Email: <span class="email"> {{userInfo().email}} </span></p>
+        <div class="field email_f">
+          <p>
+            Email: <span class="email"> {{ userInfo().email }} </span>
+          </p>
         </div>
-        <button><i class="fa-solid fa-triangle-exclamation"></i> DELETE ACCOUNT</button>
+        <button class="deleteAcc">DELETE ACCOUNT</button>
+        <p class="warning">
+          <i class="fa-solid fa-triangle-exclamation"></i> Warning: Deleting your account is
+          permanent and cannot be undone. All your reservations and data will be lost.
+        </p>
       </div>
+      <!-- reservations -->
       <div class="reservations">
         <div class="title"><i class="fa-regular fa-file-lines"></i>MY RESERVATIONS</div>
         <div class="bookings_cont">
@@ -31,7 +39,6 @@
                 </div>
               </div>
 
-              <hr />
 
               <div class="room-details">
                 <div class="room-main">
@@ -67,6 +74,11 @@
                   <p class="total">
                     Total: <strong>${{ item.totalPrice }}</strong>
                   </p>
+                </div>
+                <div class="card-actions">
+                  <button class="btn-cancel">
+                    <i class="fa-solid fa-xmark"></i> CANCEL
+                  </button>
                 </div>
               </div>
             </div>

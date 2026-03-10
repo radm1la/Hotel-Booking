@@ -63,7 +63,6 @@ export class MyBooking {
   fetchUser(){
     this.service.getUser().subscribe({
       next:(data)=>{
-        console.log(data);
         this.userInfo.set(data);
       },
       error:(err)=>{
