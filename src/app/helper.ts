@@ -79,7 +79,9 @@ export class Helper {
   }
 
   postBooking(info:any){
-    return this.http.post("https://hotelbooking.stepprojects.ge/api/Booking",info);
+    return this.http.post("https://hotelbooking.stepprojects.ge/api/Booking",info,{
+    responseType: 'text'  
+  });
   }
 
   getUser(){
