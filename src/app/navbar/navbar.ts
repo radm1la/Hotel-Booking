@@ -34,6 +34,7 @@ export class Navbar {
     this.service.isLogged.next(false);
     this.cookie.delete('user_token');
     localStorage.removeItem("user_id");
+    this.router.navigate(['/']);
   }
 
   @HostListener('window:scroll', [])

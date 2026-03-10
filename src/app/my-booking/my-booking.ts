@@ -13,8 +13,10 @@ export class MyBooking {
   isLocalLoading = signal(true);
   constructor(public service: Helper) {
     this.fetchBooking();
+    this.fetchUser();
   }
   booking = signal<any>([]);
+  userInfo = signal<any>({});
 
   fetchBooking() {
     this.isLocalLoading.set(true);
@@ -58,5 +60,15 @@ export class MyBooking {
     });
   }
 
-
+  fetchUser(){
+    this.service.getUser().subscribe({
+      next:(data)=>{
+        console.log(data);
+        this.userInfo.set(data);
+      },
+      error:(err)=>{
+        console.log("Error loading user info",err);
+      }
+    })
+  }
 }
