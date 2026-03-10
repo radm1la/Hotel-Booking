@@ -1,38 +1,41 @@
-@if (isLocalLoading()) {
-  <div class="full-page-loader">
-    <div class="spinner"></div>
-    <h2>Finding your reservations...</h2>
+<div class="booking-results">
+  <div class="profile">
+    <div class="field pfp">
+      <img [src]="userInfo().avatar" alt="user_pfp" />
+      <p class="username">{{ userInfo().firstName }} {{ userInfo().lastName }}</p>
+    </div>
+    <div class="field email_f">
+      <p>
+        Email: <span class="email"> {{ userInfo().email }} </span>
+      </p>
+    </div>
+    <button class="deleteAcc" (click)="deleteAcc()">DELETE ACCOUNT</button>
+    <p class="warning">
+      <i class="fa-solid fa-triangle-exclamation"></i> Warning: Deleting your account is permanent
+      and cannot be undone.
+    </p>
   </div>
-} @else {
-  <div class="booking-results">
-    @if (booking().length > 0) {
-      <!-- profile -->
-      <div class="profile">
-        <div class="field pfp">
-          <img [src]="userInfo().avatar" alt="user_pfp" />
-          <p class="username">{{ userInfo().firstName }} {{ userInfo().lastName }}</p>
-        </div>
-        <div class="field email_f">
-          <p>
-            Email: <span class="email"> {{ userInfo().email }} </span>
-          </p>
-        </div>
-        <button class="deleteAcc" (click)="deleteAcc()">DELETE ACCOUNT</button>
-        <p class="warning">
-          <i class="fa-solid fa-triangle-exclamation"></i> Warning: Deleting your account is
-          permanent and cannot be undone. All your reservations and data will be lost.
-        </p>
-      </div>
-      <!-- reservations -->
-      <div class="cont">
-        <div class="title"><i class="fa-regular fa-file-lines"></i>MY RESERVATIONS</div>
 
-        <div class="reservations" data-lenis-prevent>
+  <div class="cont">
+    <div class="title"><i class="fa-regular fa-file-lines"></i> MY RESERVATIONS</div>
+
+    <div class="reservations" data-lenis-prevent>
+      @if (isLocalLoading()) {
+        <div class="mini-loader">
+          <div class="dot-pulse">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+          <p>Syncing your adventures...</p>
+        </div>
+      } @else {
+        @if (booking().length > 0) {
           <div class="bookings_cont">
             @for (item of booking(); track item.id) {
               <div class="booking_card">
                 <div class="hotel-header">
-                  <img [src]="item.hotelDetails.featuredImage" class="hotel-img" alt="Hotel" />
+                  <img [src]="item.hotelDetails.featuredImage" class="hotel-img" />
                   <div class="hotel-name-loc">
                     <h4>{{ item.hotelDetails?.name }}</h4>
                     <span
@@ -43,17 +46,12 @@
 
                 <div class="room-details">
                   <div class="room-main">
-                    <img
-                      [src]="item.roomDetails?.images[0]?.source"
-                      class="room-thumb"
-                      alt="Room"
-                    />
+                    <img [src]="item.roomDetails?.images[0]?.source" class="room-thumb" />
                     <div>
                       <h5>{{ item.roomDetails?.name }}</h5>
                       <p>${{ item.roomDetails?.pricePerNight }} / night</p>
                     </div>
                   </div>
-
                   <div class="guest-info">
                     <p><strong>Guest:</strong> {{ item.customerName }}</p>
                     <p><strong>Phone:</strong> {{ item.customerPhone }}</p>
@@ -71,7 +69,6 @@
                       <p>{{ item.checkOutDate | date: 'dd MMM yyyy' }}</p>
                     </div>
                   </div>
-
                   <div class="status-price">
                     <span class="status-tag" [class.confirmed]="item.isConfirmed">
                       {{ item.isConfirmed ? 'CONFIRMED' : 'PENDING' }}
@@ -81,20 +78,21 @@
                     </p>
                   </div>
                   <div class="card-actions">
-                    <button class="btn-cancel" (click)="cancel(item.id)"><i class="fa-solid fa-xmark"></i> CANCEL </button>
+                    <button class="btn-cancel" (click)="cancel(item.id)">
+                      <i class="fa-solid fa-xmark"></i> CANCEL
+                    </button>
                   </div>
                 </div>
               </div>
             }
           </div>
-        </div>
-      </div>
-    } @else {
-      <div class="empty-state">
-        <i class="fa-solid fa-calendar-minus"></i>
-        <h2>No bookings found</h2>
-        <p>Your future adventures will appear here.</p>
-      </div>
-    }
+        } @else {
+          <div class="empty-state">
+            <i class="fa-solid fa-calendar-minus"></i>
+            <h2>No bookings found</h2>
+          </div>
+        }
+      }
+    </div>
   </div>
-}
+</div>
