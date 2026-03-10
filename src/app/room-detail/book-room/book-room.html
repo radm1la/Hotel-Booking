@@ -1,44 +1,70 @@
 <div class="booking-container">
-  <div class="weather-container">
-    <a
-      class="weatherwidget-io"
-      href="https://forecast7.com/en/41d7244d83/tbilisi/"
-      data-label_1="TBILISI"
-      data-label_2="WEATHER"
-      data-theme="original"
-      >TBILISI WEATHER</a
-    >
-  </div>
-
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d187097.03323508278!2d44.641955247965214!3d41.72760440627651!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40440cd7e64f626b%3A0x61d084ede2576ea3!2z0KLQsdC40LvQuNGB0Lg!5e1!3m2!1sru!2sge!4v1773144580155!5m2!1sru!2sge"
+    style="border: 0"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+  ></iframe>
   <div class="booking-form-area">
     <h3>Reserve Your Stay</h3>
     <form [formGroup]="bookingForm" (ngSubmit)="submitBooking()">
       <div class="input-group">
-        <label>Check-in</label>
-        <input type="date" formControlName="checkInDate" [min]="today"/>
+        <label>Check-in <span class="req">*</span></label>
+        <input type="date" formControlName="checkInDate" [min]="today" />
+        @if (hasError('checkInDate', 'required')) {
+          <p class="input-hint">
+            <i class="fa-solid fa-circle-info"></i> Check in date is required
+          </p>
+        }
       </div>
 
       <div class="input-group">
-        <label>Check-out</label>
-        <input type="date" formControlName="checkOutDate" [min]="today"/>
+        <label>Check-out <span class="req">*</span></label>
+        <input type="date" formControlName="checkOutDate" [min]="today" />
+        @if (hasError('checkOutDate', 'required')) {
+          <p class="input-hint">
+            <i class="fa-solid fa-circle-info"></i> Check out date is required
+          </p>
+        }
       </div>
 
       <div class="input-group">
-        <label>Full Name</label>
+        <label>Full Name <span class="req">*</span></label>
         <input type="text" formControlName="customerName" placeholder="Your name" />
+        @if (hasError('customerName', 'required')) {
+          <p class="input-hint"><i class="fa-solid fa-circle-info"></i> Last name is required</p>
+        }
       </div>
 
       <div class="input-group">
-        <label>Phone Number</label>
-        <input type="text" formControlName="customerPhone" placeholder="+995..." />
+        <label>Phone Number <span class="req">*</span></label>
+        <input type="text" formControlName="customerPhone" />
+        @if (hasError('customerPhone', 'pattern')) {
+          <p class="input-hint"><i class="fa-solid fa-circle-info"></i> Format: +995XXXXXXXXX</p>
+        } @else if (hasError('customerPhone', 'required')) {
+          <p class="input-hint"><i class="fa-solid fa-circle-info"></i> Phone number is required</p>
+        }
       </div>
 
       <div class="price-display">
         <span>Total Price:</span>
         <strong>${{ totalPrice() }}</strong>
       </div>
-
-      <button type="submit" [disabled]="bookingForm.invalid">CONFIRM BOOKING</button>
+    
+      @if (islogged) {
+        <button type="submit" [disabled]="bookingForm.invalid">CONFIRM BOOKING</button>
+      } @else {
+        <button type="button" class="login-prompt-btn" routerLink="/login">
+          PLEASE LOGIN TO BOOK
+        </button>
+      }
     </form>
+      @if (errorMessage) {
+        <p class="error-message">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          {{ errorMessage }}
+        </p>
+      }
   </div>
 </div>
