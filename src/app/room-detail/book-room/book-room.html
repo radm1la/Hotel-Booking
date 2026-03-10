@@ -51,20 +51,26 @@
         <span>Total Price:</span>
         <strong>${{ totalPrice() }}</strong>
       </div>
-    
+
       @if (islogged) {
-        <button type="submit" [disabled]="bookingForm.invalid">CONFIRM BOOKING</button>
+        <button type="submit" [disabled]="bookingForm.invalid">
+          @if (service.isLoading()) {
+            <i class="fa-solid fa-spinner fa-spin"></i> PROCESSING...
+          } @else {
+            CONFIRM BOOKING
+          }
+        </button>
       } @else {
         <button type="button" class="login-prompt-btn" routerLink="/login">
           PLEASE LOGIN TO BOOK
         </button>
       }
     </form>
-      @if (errorMessage) {
-        <p [className]="errorMessage.includes('successfully') ? 'booked' : 'error-message'">
-          <i class="fa-solid fa-circle-exclamation"></i>
-          {{ errorMessage}}
-        </p>
-      }
+    @if (errorMessage) {
+      <p [className]="errorMessage.includes('successfully') ? 'booked' : 'error-message'">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        {{ errorMessage }}
+      </p>
+    }
   </div>
 </div>

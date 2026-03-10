@@ -32,7 +32,7 @@ export class BookRoom implements OnInit {
     ]),
   });
 
-  constructor(private service: Helper) {
+  constructor(public service: Helper) {
     this.bookingForm.valueChanges.subscribe(() => {
       this.errorMessage = '';
       this.cdr.detectChanges();
