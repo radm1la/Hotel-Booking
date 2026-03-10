@@ -1,1 +1,35 @@
-<p>my-booking works!</p>
+@if (isLocalLoading()) {
+  <div class="full-page-loader">
+    <div class="spinner"></div>
+    <h2>Finding your reservations...</h2>
+  </div>
+} @else {
+  <div class="booking-results">
+    @if (booking().length > 0) {
+      <div class="profile">
+        <div class="field">
+          <img [src]="" alt="user_pfp" />
+          <p class="username"></p>
+        </div>
+        <div class="field">
+          <p>Email: <span class="email"></span></p>
+        </div>
+        <button><i class="fa-solid fa-triangle-exclamation"></i> DELETE ACCOUNT</button>
+      </div>
+      <div class="reservations">
+        <div class="title"><i class="fa-regular fa-file-lines"></i>MY RESERVATIONS</div>
+        <div class="bookings_cont">
+            @for (item of booking(); track $index) {
+                
+            }
+        </div>
+      </div>
+    } @else {
+      <div class="empty-state">
+        <i class="fa-solid fa-calendar-minus"></i>
+        <h2>No bookings found</h2>
+        <p>Your future adventures will appear here.</p>
+      </div>
+    }
+  </div>
+}

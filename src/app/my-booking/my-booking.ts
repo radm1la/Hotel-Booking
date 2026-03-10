@@ -8,20 +8,20 @@ import { Helper } from '../helper';
   styleUrl: './my-booking.css',
 })
 export class MyBooking {
-  constructor(private service:Helper){
+  isLocalLoading = signal(true);
+  constructor(public service: Helper) {
     this.fetchBooking();
   }
   booking = signal<any>([]);
 
-  fetchBooking(){
-    this.service.getBooking().subscribe((data:any)=>{
-      console.log(data);
-      
-       data.forEach((i:any)=>{        
-        if(i.customerId == localStorage.getItem("user_id")){
-          console.log(i);
-        }
-       })
-    })
+  fetchBooking() {
+    this.isLocalLoading.set(true);
+    const currentUserId = localStorage.getItem('user_id');
+    this.service.getBooking().subscribe((data: any) => {
+      const myBookings = data.filter((i: any) => i.customerId === currentUserId);
+      this.booking.set(myBookings);
+      this.isLocalLoading.set(false);
+      console.log(myBookings);
+    });
   }
 }
