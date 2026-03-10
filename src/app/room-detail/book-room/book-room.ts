@@ -1,43 +1,36 @@
-import { Component, input, signal } from '@angular/core';
+import { AfterViewInit, Component, input, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Helper } from '../../helper';
-import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-book-room',
-  imports: [ReactiveFormsModule,DecimalPipe],
+  imports: [ReactiveFormsModule],
   templateUrl: './book-room.html',
   styleUrl: './book-room.css',
 })
-export class BookRoom {
+export class BookRoom implements AfterViewInit {
   roomInfo = input<any>();
+  today = new Date().toISOString().split('T')[0];
 
-  bookedDatesSet = new Set<string>();
   totalPrice = signal(0);
 
   bookingForm = new FormGroup({
     checkInDate: new FormControl('', [Validators.required]),
     checkOutDate: new FormControl('', [Validators.required]),
     customerName: new FormControl('', [Validators.required]),
-    customerPhone: new FormControl('', [Validators.required])
+    customerPhone: new FormControl('', [Validators.required]),
   });
 
   constructor(private service: Helper) {}
 
   ngOnInit() {
-    // Convert booked dates to simple YYYY-MM-DD strings for quick lookup
-    this.roomInfo().bookedDates.forEach((d: any) => {
-      this.bookedDatesSet.add(d.date.split('T')[0]);
-    });
-
-    // Recalculate price when dates change
     this.bookingForm.valueChanges.subscribe(() => this.calculatePrice());
   }
 
   calculatePrice() {
     const start = this.bookingForm.value.checkInDate;
     const end = this.bookingForm.value.checkOutDate;
-    
+
     if (start && end) {
       const days = (new Date(end).getTime() - new Date(start).getTime()) / (1000 * 3600 * 24);
       if (days > 0) {
@@ -53,13 +46,19 @@ export class BookRoom {
         roomID: this.roomInfo().id,
         totalPrice: this.totalPrice(),
         isConfirmed: true,
-        customerId: localStorage.getItem('user_id') // Assuming you saved this at login
+        customerId: localStorage.getItem('user_id'), 
       };
 
       this.service.postBooking(payload).subscribe({
-        next: (res:any) => alert('Booking Successful!'),
-        error: (err:any) => console.error(err)
+        next: (res: any) => alert('Booking Successful!'),
+        error: (err: any) => console.error(err),
       });
+    }
+  }
+
+  ngAfterViewInit(): void {
+    if ((window as any).__weatherwidget_init) {
+      (window as any).__weatherwidget_init();
     }
   }
 }

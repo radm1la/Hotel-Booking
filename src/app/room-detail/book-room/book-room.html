@@ -1,14 +1,13 @@
 <div class="booking-container">
-  <div class="calendar-visual">
-    <h3>Occupancy Calendar</h3>
-    <div class="calendar-grid">
-      @for(day of [].constructor(31); track $index) {
-        <div class="day" [class.booked]="bookedDatesSet.has('2026-03-' + ($index + 1 | number:'2.0-0'))">
-          {{ $index + 1 }}
-        </div>
-      }
-    </div>
-    <p class="note"><span class="red-box"></span> Red dates are already booked.</p>
+  <div class="weather-container">
+    <a
+      class="weatherwidget-io"
+      href="https://forecast7.com/en/41d7244d83/tbilisi/"
+      data-label_1="TBILISI"
+      data-label_2="WEATHER"
+      data-theme="original"
+      >TBILISI WEATHER</a
+    >
   </div>
 
   <div class="booking-form-area">
@@ -16,22 +15,22 @@
     <form [formGroup]="bookingForm" (ngSubmit)="submitBooking()">
       <div class="input-group">
         <label>Check-in</label>
-        <input type="date" formControlName="checkInDate">
+        <input type="date" formControlName="checkInDate" [min]="today"/>
       </div>
-      
+
       <div class="input-group">
         <label>Check-out</label>
-        <input type="date" formControlName="checkOutDate">
+        <input type="date" formControlName="checkOutDate" [min]="today"/>
       </div>
 
       <div class="input-group">
         <label>Full Name</label>
-        <input type="text" formControlName="customerName" placeholder="Your name">
+        <input type="text" formControlName="customerName" placeholder="Your name" />
       </div>
 
       <div class="input-group">
         <label>Phone Number</label>
-        <input type="text" formControlName="customerPhone" placeholder="+995...">
+        <input type="text" formControlName="customerPhone" placeholder="+995..." />
       </div>
 
       <div class="price-display">

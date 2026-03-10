@@ -39,7 +39,6 @@ export class Login {
           this.fetchUser();
         },
         error: (err) => {
-          console.log(err);
           this.errorMessage = err.error?.error || 'Invalid email or password';
           this.cdr.detectChanges();
         },
@@ -56,14 +55,11 @@ export class Login {
     this.service.getUser().subscribe(
       {
         next:(data:any)=>{
-          console.log(data);
           localStorage.setItem("user_id",data._id)
           this.service.isLogged.next(true);
           this.close();
         },
-        error:(err)=>{
-          console.log(err);
-          
+        error:(err)=>{          
           if(err.status == 409){
             this.errorMessage = "Verification email has been sent to you email.";
             this.cdr.detectChanges();

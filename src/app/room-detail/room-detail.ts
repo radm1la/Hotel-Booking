@@ -27,7 +27,6 @@ export class RoomDetail {
     const id = Number(this.route.snapshot.paramMap.get('roomId'));
     this.service.getRoomById(id).subscribe({
       next: (data: any) => {
-        console.log(data);
         this.randomIndex = Math.floor(Math.random() * data.images.length);
         this.roomInfo.set(data);
       },
