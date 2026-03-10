@@ -2,6 +2,7 @@ import { Component, signal } from '@angular/core';
 import { Helper } from '../helper';
 import { DatePipe } from '@angular/common';
 import { forkJoin, map, switchMap } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-booking',
@@ -11,7 +12,7 @@ import { forkJoin, map, switchMap } from 'rxjs';
 })
 export class MyBooking {
   isLocalLoading = signal(true);
-  constructor(public service: Helper) {
+  constructor(public service: Helper,private router:Router) {
     this.fetchBooking();
     this.fetchUser();
   }
@@ -68,6 +69,31 @@ export class MyBooking {
       error:(err)=>{
         console.log("Error loading user info",err);
       }
+    })
+  }
+
+  deleteAcc(){
+    this.service.deleteAccount().subscribe({
+      next:(data)=>{
+        console.log(data);
+        this.router.navigate(["/"]);
+      },
+      error:(err)=>{
+        console.log("Erro deleting user account",err);
+      }
+    })
+  }
+
+  cancel(id:number){
+    this.service.cancelBooking(id).subscribe({
+      next:(data)=>{
+        console.log(data);
+        this.fetchBooking();
+      },error:(err)=>{
+        console.log("Error calceling booking",err);
+        
+      }
+
     })
   }
 }

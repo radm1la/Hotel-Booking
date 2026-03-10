@@ -17,7 +17,7 @@
             Email: <span class="email"> {{ userInfo().email }} </span>
           </p>
         </div>
-        <button class="deleteAcc">DELETE ACCOUNT</button>
+        <button class="deleteAcc" (click)="deleteAcc()">DELETE ACCOUNT</button>
         <p class="warning">
           <i class="fa-solid fa-triangle-exclamation"></i> Warning: Deleting your account is
           permanent and cannot be undone. All your reservations and data will be lost.
@@ -81,7 +81,7 @@
                     </p>
                   </div>
                   <div class="card-actions">
-                    <button class="btn-cancel"><i class="fa-solid fa-xmark"></i> CANCEL</button>
+                    <button class="btn-cancel" (click)="cancel(item.id)"><i class="fa-solid fa-xmark"></i> CANCEL </button>
                   </div>
                 </div>
               </div>
