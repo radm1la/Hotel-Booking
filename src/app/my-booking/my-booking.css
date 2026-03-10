@@ -53,6 +53,7 @@ p {
   display: flex;
   padding: 40px 200px;
   gap: 60px;
+  align-items: flex-start;
 }
 
 .profile {
@@ -112,36 +113,40 @@ button.deleteAcc:hover {
   box-shadow: 0 4px 15px rgba(255, 77, 77, 0.3);
 }
 
-.warning{
+.warning {
   font-size: 12px;
   margin-top: 10px;
   color: red;
 }
 
-.reservations{
-  border: 1px solid lightgray;
+.cont{
   width: 100%;
-  margin-top: 55px;
-  position: relative;
-  padding: 60px;
 }
 
-.title{
+.reservations {
+  border: 1px solid lightgray;
+  width: 100%;
+  padding: 40px;
+  overflow-y: auto;
+  max-height: calc(100vh - 250px);
+  overscroll-behavior: contain;
+}
+
+.title {
+  width: 250px;
+  text-align: center;
   background-color: #fff;
   font-size: 18px;
   font-family: var(--pff);
   display: flex;
   gap: 10px;
   padding: 15px;
-  position: absolute;
-  top: -54px;
-  left: -1px;
   border-top: 3px solid var(--lb);
   border-left: 1px solid lightgray;
   border-right: 1px solid lightgray;
 }
 
-.bookings_cont{
+.bookings_cont {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -150,9 +155,9 @@ button.deleteAcc:hover {
 .booking_card {
   width: 100%;
   display: flex;
-  background-color: #fff; 
+  background-color: #fff;
   border: 1px solid #eee;
-  padding: 0; 
+  padding: 0;
   justify-content: flex-start;
   color: #333;
   margin-bottom: 30px;
@@ -178,13 +183,19 @@ button.deleteAcc:hover {
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
   padding: 15px;
   color: #fff;
 }
 
-.hotel-name-loc h4 { margin: 0; font-size: 1.1rem; }
-.hotel-name-loc span { font-size: 0.8rem; opacity: 0.8; }
+.hotel-name-loc h4 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+.hotel-name-loc span {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
 
 .room-details {
   flex: 2;
@@ -209,12 +220,22 @@ button.deleteAcc:hover {
   object-fit: cover;
 }
 
-.room-main h5 { margin: 0; font-size: 1rem; color: #1d2932; }
-.room-main p { margin: 0; font-size: 0.9rem; color: gray; }
+.room-main h5 {
+  margin: 0;
+  font-size: 1rem;
+  color: #1d2932;
+}
+.room-main p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: gray;
+}
 
-.guest-info p { font-size: 0.85rem; margin: 3px 0; }
+.guest-info p {
+  font-size: 0.85rem;
+  margin: 3px 0;
+}
 
-/* 3. Right Section: Dates & Actions */
 .booking-footer {
   flex: 1.5;
   padding: 20px;
@@ -230,8 +251,16 @@ button.deleteAcc:hover {
   margin-bottom: 15px;
 }
 
-.dates small { color: #888; font-weight: bold; font-size: 0.7rem; }
-.dates p { margin: 0; font-size: 0.85rem; font-weight: 500; }
+.dates small {
+  color: #888;
+  font-weight: bold;
+  font-size: 0.7rem;
+}
+.dates p {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
 
 .status-tag {
   display: inline-block;
@@ -247,8 +276,14 @@ button.deleteAcc:hover {
   color: #2e7d32;
 }
 
-.total { margin: 10px 0; font-size: 1rem; }
-.total strong { color: #1d2932; font-size: 1.2rem; }
+.total {
+  margin: 10px 0;
+  font-size: 1rem;
+}
+.total strong {
+  color: #1d2932;
+  font-size: 1.2rem;
+}
 
 .btn-cancel {
   width: 100%;

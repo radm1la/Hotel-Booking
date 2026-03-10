@@ -24,65 +24,69 @@
         </p>
       </div>
       <!-- reservations -->
-      <div class="reservations">
+      <div class="cont">
         <div class="title"><i class="fa-regular fa-file-lines"></i>MY RESERVATIONS</div>
-        <div class="bookings_cont">
-          @for (item of booking(); track item.id) {
-            <div class="booking_card">
-              <div class="hotel-header">
-                <img [src]="item.hotelDetails.featuredImage" class="hotel-img" alt="Hotel" />
-                <div class="hotel-name-loc">
-                  <h4>{{ item.hotelDetails?.name }}</h4>
-                  <span
-                    ><i class="fa-solid fa-location-dot"></i> {{ item.hotelDetails?.city }}</span
-                  >
-                </div>
-              </div>
 
-
-              <div class="room-details">
-                <div class="room-main">
-                  <img [src]="item.roomDetails?.images[0]?.source" class="room-thumb" alt="Room" />
-                  <div>
-                    <h5>{{ item.roomDetails?.name }}</h5>
-                    <p>${{ item.roomDetails?.pricePerNight }} / night</p>
+        <div class="reservations" data-lenis-prevent>
+          <div class="bookings_cont">
+            @for (item of booking(); track item.id) {
+              <div class="booking_card">
+                <div class="hotel-header">
+                  <img [src]="item.hotelDetails.featuredImage" class="hotel-img" alt="Hotel" />
+                  <div class="hotel-name-loc">
+                    <h4>{{ item.hotelDetails?.name }}</h4>
+                    <span
+                      ><i class="fa-solid fa-location-dot"></i> {{ item.hotelDetails?.city }}</span
+                    >
                   </div>
                 </div>
 
-                <div class="guest-info">
-                  <p><strong>Guest:</strong> {{ item.customerName }}</p>
-                  <p><strong>Phone:</strong> {{ item.customerPhone }}</p>
+                <div class="room-details">
+                  <div class="room-main">
+                    <img
+                      [src]="item.roomDetails?.images[0]?.source"
+                      class="room-thumb"
+                      alt="Room"
+                    />
+                    <div>
+                      <h5>{{ item.roomDetails?.name }}</h5>
+                      <p>${{ item.roomDetails?.pricePerNight }} / night</p>
+                    </div>
+                  </div>
+
+                  <div class="guest-info">
+                    <p><strong>Guest:</strong> {{ item.customerName }}</p>
+                    <p><strong>Phone:</strong> {{ item.customerPhone }}</p>
+                  </div>
+                </div>
+
+                <div class="booking-footer">
+                  <div class="dates">
+                    <div>
+                      <small>CHECK-IN</small>
+                      <p>{{ item.checkInDate | date: 'dd MMM yyyy' }}</p>
+                    </div>
+                    <div>
+                      <small>CHECK-OUT</small>
+                      <p>{{ item.checkOutDate | date: 'dd MMM yyyy' }}</p>
+                    </div>
+                  </div>
+
+                  <div class="status-price">
+                    <span class="status-tag" [class.confirmed]="item.isConfirmed">
+                      {{ item.isConfirmed ? 'CONFIRMED' : 'PENDING' }}
+                    </span>
+                    <p class="total">
+                      Total: <strong>${{ item.totalPrice }}</strong>
+                    </p>
+                  </div>
+                  <div class="card-actions">
+                    <button class="btn-cancel"><i class="fa-solid fa-xmark"></i> CANCEL</button>
+                  </div>
                 </div>
               </div>
-
-              <div class="booking-footer">
-                <div class="dates">
-                  <div>
-                    <small>CHECK-IN</small>
-                    <p>{{ item.checkInDate | date: 'dd MMM yyyy' }}</p>
-                  </div>
-                  <div>
-                    <small>CHECK-OUT</small>
-                    <p>{{ item.checkOutDate | date: 'dd MMM yyyy' }}</p>
-                  </div>
-                </div>
-
-                <div class="status-price">
-                  <span class="status-tag" [class.confirmed]="item.isConfirmed">
-                    {{ item.isConfirmed ? 'CONFIRMED' : 'PENDING' }}
-                  </span>
-                  <p class="total">
-                    Total: <strong>${{ item.totalPrice }}</strong>
-                  </p>
-                </div>
-                <div class="card-actions">
-                  <button class="btn-cancel">
-                    <i class="fa-solid fa-xmark"></i> CANCEL
-                  </button>
-                </div>
-              </div>
-            </div>
-          }
+            }
+          </div>
         </div>
       </div>
     } @else {
