@@ -31,19 +31,29 @@ p {
 .dot {
   width: 12px;
   height: 12px;
-  background-color: #bead8e; 
+  background-color: #bead8e;
   border-radius: 50%;
   animation: pulse 1.5s infinite ease-in-out;
 }
 
-.dot:nth-child(2) { animation-delay: 0.2s; }
-.dot:nth-child(3) { animation-delay: 0.4s; }
-
-@keyframes pulse {
-  0%, 100% { transform: scale(0.8); opacity: 0.5; }
-  50% { transform: scale(1.2); opacity: 1; }
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
 }
 
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
 
 .booking-results {
   display: flex;
@@ -266,6 +276,12 @@ button.deleteAcc:hover {
   border-radius: 4px;
   background: #eee;
 }
+.status-tag.canceling {
+  background-color: #fff9c4; 
+  color: #fbc02d; 
+  border: 1px solid #fdd835;
+  animation: pulse-yellow 1.5s infinite;
+}
 
 .status-tag.confirmed {
   background: #e8f5e9;
@@ -296,4 +312,19 @@ button.deleteAcc:hover {
 .btn-cancel:hover {
   background: #ff4d4d;
   color: #fff;
+}
+
+.booking_card:has(.btn-cancel.deleting) {
+  opacity: 0.6;
+  filter: grayscale(0.4);
+  pointer-events: none;
+  border: 1px dashed #ff4d4d;
+  transition: all 0.3s ease;
+}
+
+.btn-cancel.deleting {
+  background-color: #f3f3f3;
+  color: #888;
+  border-color: #ccc;
+  cursor: not-allowed;
 }

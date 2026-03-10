@@ -70,16 +70,34 @@
                     </div>
                   </div>
                   <div class="status-price">
-                    <span class="status-tag" [class.confirmed]="item.isConfirmed">
-                      {{ item.isConfirmed ? 'CONFIRMED' : 'PENDING' }}
+                    <span
+                      class="status-tag"
+                      [class.confirmed]="item.isConfirmed && !isDeleting().includes(item.id)"
+                      [class.canceling]="isDeleting().includes(item.id)"
+                    >
+                      @if (isDeleting().includes(item.id)) {
+                        CANCELING...
+                      } @else {
+                        {{ item.isConfirmed ? 'CONFIRMED' : 'PENDING' }}
+                      }
                     </span>
+
                     <p class="total">
                       Total: <strong>${{ item.totalPrice }}</strong>
                     </p>
                   </div>
                   <div class="card-actions">
-                    <button class="btn-cancel" (click)="cancel(item.id)">
-                      <i class="fa-solid fa-xmark"></i> CANCEL
+                    <button
+                      class="btn-cancel"
+                      (click)="cancel(item.id)"
+                      [disabled]="isDeleting().includes(item.id)"
+                      [class.deleting]="isDeleting().includes(item.id)"
+                    >
+                      @if (isDeleting().includes(item.id)) {
+                        CANCELING...
+                      } @else {
+                        <i class="fa-solid fa-xmark"></i> CANCEL
+                      }
                     </button>
                   </div>
                 </div>
