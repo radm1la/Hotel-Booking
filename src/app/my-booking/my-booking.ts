@@ -3,6 +3,8 @@ import { Helper } from '../helper';
 import { DatePipe } from '@angular/common';
 import { forkJoin, map, switchMap } from 'rxjs';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @Component({
   selector: 'app-my-booking',
@@ -19,6 +21,7 @@ export class MyBooking {
   constructor(
     public service: Helper,
     private router: Router,
+    private cookie:CookieService
   ) {
     this.fetchBooking();
     this.fetchUser();
@@ -81,6 +84,9 @@ export class MyBooking {
     this.service.deleteAccount().subscribe({
       next: (data) => {
         console.log(data);
+        this.cookie.delete("user_token");
+        localStorage.removeItem("user_id");
+        this.service.isLogged.next(false);
         this.router.navigate(['/']);
       },
       error: (err) => {
