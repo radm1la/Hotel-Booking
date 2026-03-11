@@ -103,3 +103,52 @@ button:hover::before {
     background: transparent;
 }
 
+@media (max-width: 1250px) {
+  :host {
+    justify-content: center; 
+    gap: 40px;
+  }
+
+  .card {
+    width: 45%; 
+  }
+}
+
+@media (max-width: 850px) {
+  .card {
+    width: 100%; 
+    max-width: 500px;
+  }
+
+  span.price {
+    font-size: 14px;
+    width: 90%; 
+    text-align: center;
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  :host {
+    gap: 50px;
+  }
+
+  h1 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  p {
+    padding-inline: 15px; 
+    font-size: 14px;
+  }
+
+  button {
+    width: 100%; 
+    justify-content: center;
+  }
+
+  .img img {
+    height: 250px; 
+  }
+}

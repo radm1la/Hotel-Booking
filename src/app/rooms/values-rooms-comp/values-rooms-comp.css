@@ -115,3 +115,57 @@ p{
     transform:  scale(1); 
   }
 }
+
+
+@media (max-width: 1400px) {
+    :host {
+        padding: 50px 80px; 
+    }
+}
+
+@media (max-width: 1024px) {
+    h1 {
+        font-size: 30px;
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 50px 20px;
+        justify-items: center;
+    }
+
+    .field {
+        max-width: 100%; 
+    }
+}
+
+@media (max-width: 600px) {
+    :host {
+        padding: 50px 20px; 
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .line {
+        width: 120px; 
+    }
+
+    section {
+        grid-template-columns: 1fr; 
+        gap: 40px;
+    }
+
+    .icon {
+        font-size: 40px; 
+        padding: 25px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+}

@@ -53,3 +53,26 @@ h1{
     font-size: 56px;
     font-weight: 200;
 }
+
+
+@media (max-width: 1024px) {
+    section {
+        height: 60vh; 
+    }
+    
+    h1 {
+        font-size: 42px; 
+        text-align: center;
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        height: 50vh;
+    }
+
+    h1 {
+        font-size: 32px; 
+    }
+}

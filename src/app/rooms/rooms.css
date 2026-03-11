@@ -10,3 +10,19 @@
     color: var(--lb);
     text-transform: uppercase;
 }
+
+@media (max-width: 1200px) {
+    .rooms-list-container {
+        padding: 50px 80px; 
+    }
+}
+
+@media (max-width: 768px) {
+    .rooms-list-container {
+        padding: 40px 20px; 
+    }
+
+    .no_rooms {
+        font-size: 20px; 
+    }
+}
