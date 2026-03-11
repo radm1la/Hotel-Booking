@@ -68,11 +68,13 @@ export class GoToRoomsComp implements AfterViewInit, OnInit {
   }
 
   paraOneTransform = computed(() => {
+    if (window.innerWidth < 1135) return 'translate3d(0, 0, 0)';
     const relativeScroll = this.scrollY() - 1200; 
     return `translate3d(0, ${relativeScroll * 0.05}px, 0)`;
   });
 
   paraTwoTransform = computed(() => {
+    if (window.innerWidth < 1135) return 'translate3d(0, 0, 0)';
     const relativeScroll = this.scrollY() - 1200;
     return `translate3d(0, ${relativeScroll * -0.1}px, 0)`;
   });
