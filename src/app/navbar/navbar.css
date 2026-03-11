@@ -154,7 +154,7 @@ i {
   }
 
   .auth_menu .link {
-    font-size: 32px;
+    font-size: 24px;
     letter-spacing: 1px;
     color: var(--dg);
     display: flex;

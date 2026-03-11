@@ -13,11 +13,11 @@
 
     <div class="menu-center">
       <ul class="links_menu">
-        <li routerLink="/" class="link" [class.active-link]="isActive('/')">HOME</li>
+        <li routerLink="/" class="link" [class.active-link]="isActive('/')" (click)="closeMenu()">HOME</li>
 
-        <li routerLink="/hotels" class="link" [class.active-link]="isActive('/hotels')">HOTELS</li>
+        <li routerLink="/hotels" class="link" [class.active-link]="isActive('/hotels')" (click)="closeMenu()">HOTELS</li>
 
-        <li [routerLink]="['/rooms', -1]" class="link" [class.active-link]="isActive('/rooms')">
+        <li [routerLink]="['/rooms', -1]" class="link" [class.active-link]="isActive('/rooms')" (click)="closeMenu()">
           ROOMS
         </li>
       </ul>
@@ -26,9 +26,9 @@
     <div class="menu-right">
       @if (isLogged) {
         <ul class="auth_menu">
-          <li class="link" routerLink="/mybooking">My Booking</li>
+          <li class="link" routerLink="/mybooking" (click)="closeMenu()">My Booking</li>
           /
-          <li class="link" (click)="logOut()">
+          <li class="link" (click)="logOut()" (click)="closeMenu()">
             <i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out
           </li>
         </ul>
