@@ -329,6 +329,14 @@ button.deleteAcc:hover {
   cursor: not-allowed;
 }
 
+.empty-state{
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  color: var(--lb);
+}
+
 
 @media (max-width: 1600px) {
   .booking-results {
