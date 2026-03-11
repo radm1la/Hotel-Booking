@@ -1,15 +1,19 @@
 :host{
     display: block;
-    padding: 30px 10px;
+    padding: 60px 20px;
 }
 
 section{
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1700px;
+    margin: 0 auto;
 }
 
 .card{
-    width: 500px;
+   flex: 0 1 500px; 
     height: 300px;
     border: 1px solid gray;
     display: flex;
@@ -112,3 +116,22 @@ section{
   }
 }
 
+@media (max-width: 1135px) {
+  .card {
+    flex: 1 1 45%; 
+    height: auto;
+    padding: 40px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex: 1 1 100%;
+    height: auto;
+    max-width: 100%;
+  }
+  
+  section {
+    gap: 20px;
+  }
+}
