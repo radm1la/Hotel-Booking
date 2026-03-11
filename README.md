@@ -1,3 +1,6 @@
+
+<img width="2473" height="1390" alt="Screenshot 2026-03-11 214147" src="https://github.com/user-attachments/assets/b6aa3488-2f1b-4919-be77-fc542be8e0e4" />
+
 # GeoNest 🏨
 
 A hotel booking app built with Angular 18+. Search rooms, make reservations, and manage your bookings — all in one place.
