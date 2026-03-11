@@ -328,3 +328,85 @@ button.deleteAcc:hover {
   border-color: #ccc;
   cursor: not-allowed;
 }
+
+
+@media (max-width: 1600px) {
+  .booking-results {
+    padding: 40px 100px; 
+  }
+}
+
+@media (max-width: 1200px) {
+  .booking-results {
+    padding: 40px 50px;
+    gap: 30px;
+  }
+  .profile {
+    width: 350px; 
+  }
+}
+
+@media (max-width: 992px) {
+  .booking-results {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .profile {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 40px;
+  }
+
+  .cont {
+    width: 100%;
+  }
+
+  .reservations {
+    max-height: none; 
+    padding: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .booking_card {
+    flex-direction: column; 
+  }
+
+  .hotel-header {
+    width: 100%;
+    min-width: 100%;
+    height: 150px;
+  }
+
+  .room-details {
+    border-right: none;
+    border-bottom: 1px solid #eee;
+    padding: 15px;
+  }
+
+  .booking-footer {
+    padding: 15px;
+  }
+
+  .dates {
+    gap: 10px;
+  }
+
+  .status-price {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .total {
+    margin: 0;
+  }
+
+  .title {
+    width: 100%; 
+    justify-content: center;
+  }
+}

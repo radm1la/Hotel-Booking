@@ -5,7 +5,6 @@ import { forkJoin, map, switchMap } from 'rxjs';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
-
 @Component({
   selector: 'app-my-booking',
   imports: [DatePipe],
@@ -21,7 +20,7 @@ export class MyBooking {
   constructor(
     public service: Helper,
     private router: Router,
-    private cookie:CookieService
+    private cookie: CookieService,
   ) {
     this.fetchBooking();
     this.fetchUser();
@@ -81,18 +80,20 @@ export class MyBooking {
   }
 
   deleteAcc() {
-    this.service.deleteAccount().subscribe({
-      next: (data) => {
-        console.log(data);
-        this.cookie.delete("user_token");
-        localStorage.removeItem("user_id");
-        this.service.isLogged.next(false);
-        this.router.navigate(['/']);
-      },
-      error: (err) => {
-        console.log('Erro deleting user account', err);
-      },
-    });
+    if (confirm('Are you absolutely sure? This will erase all your bookings and account data.')) {
+      this.service.deleteAccount().subscribe({
+        next: (data) => {
+          console.log(data);
+          this.cookie.delete('user_token');
+          localStorage.removeItem('user_id');
+          this.service.isLogged.next(false);
+          this.router.navigate(['/']);
+        },
+        error: (err) => {
+          console.log('Erro deleting user account', err);
+        },
+      });
+    }
   }
 
   cancel(id: number) {
