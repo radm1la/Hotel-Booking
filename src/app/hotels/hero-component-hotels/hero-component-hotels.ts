@@ -13,12 +13,17 @@ export class HeroComponentHotels implements OnInit {
     this.scrollY.set(window.scrollY);
   }
 
-  heroTransform = computed(() => `translate3d(0, ${this.scrollY() * 0.4}px, 0)`);
-  textTransform = computed(() => `translate3d(0, ${this.scrollY() * 0.1}px, 0)`);
+  heroTransform = computed(() => {
+    if (window.innerWidth < 768) return `translate3d(0, 0, 0)`;
+    return `translate3d(0, ${this.scrollY() * 0.4}px, 0)`;
+  });
+  textTransform = computed(() => {
+    if (window.innerWidth < 768) return `translate3d(0, 0, 0)`;
+    return `translate3d(0, ${this.scrollY() * 0.1}px, 0)`;
+  });
 
-  @HostListener('window:scroll',[])
-  onWindowScroll(){
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
     this.scrollY.set(window.scrollY);
   }
-
 }

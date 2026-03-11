@@ -10,6 +10,8 @@ section{
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
+    text-align: center;
 }
 
 .parallax-bg{
@@ -50,10 +52,16 @@ img{
 
 h1{
     font-family: var(--hff);
-    font-size: 56px;
+    font-size: clamp(32px, 6vw, 64px);
 }
 
 p{
     font-family: var(--pff);
-    font-size: 20px;
+    font-size: clamp(16px, 2vw, 22px);
+}
+
+@media (max-width: 768px) {
+    section {
+        height: 50vh; 
+    }
 }
