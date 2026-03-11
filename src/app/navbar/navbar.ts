@@ -17,6 +17,7 @@ export class Navbar {
   isHidden = signal(false);
   private lastScrollY = 0;
   isLogged = false;
+  menuOpen = signal(false);
 
   checkAuth() {
     const token = this.cookie.get('user_token');
@@ -31,6 +32,7 @@ export class Navbar {
   }
 
   logOut() {
+    this.closeMenu();
     this.service.isLogged.next(false);
     this.cookie.delete('user_token');
     localStorage.removeItem("user_id");
@@ -71,4 +73,13 @@ export class Navbar {
     }
     return this.currentUrl.includes(path);
   }
+
+  toggleMenu(){
+    this.menuOpen.update(val => !val);
+  }
+
+  closeMenu(){
+    this.menuOpen.set(false);
+  }
+
 }

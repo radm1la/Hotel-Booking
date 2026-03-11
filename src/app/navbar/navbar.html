@@ -4,7 +4,11 @@
     <h1>GeoNest</h1>
   </div>
 
-  <div class="menu">
+  <div class="hamburger" (click)="toggleMenu()">
+    <i class="fa-solid" [class.fa-bars]="!menuOpen()" [class.fa-xmark]="menuOpen()"></i>
+  </div>
+
+  <div class="menu" [class.menu-active]="menuOpen()">
     <div class="menu-left"></div>
 
     <div class="menu-center">
@@ -20,19 +24,21 @@
     </div>
 
     <div class="menu-right">
-     @if (isLogged) {
-      <ul class="auth_menu">
-        <li class="link" routerLink="/mybooking">My Booking</li>
-        /
-        <li class="link" (click)="logOut()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out</li>
-      </ul>
-     }@else{
-       <ul class="auth_menu">
-        <li class="link" routerLink="/login"><i class="fa-regular fa-circle-user"></i> Login</li>
-        /
-        <li class="link" routerLink="/signup">Register</li>
-      </ul>
-     }
+      @if (isLogged) {
+        <ul class="auth_menu">
+          <li class="link" routerLink="/mybooking">My Booking</li>
+          /
+          <li class="link" (click)="logOut()">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out
+          </li>
+        </ul>
+      } @else {
+        <ul class="auth_menu">
+          <li class="link" routerLink="/login"><i class="fa-regular fa-circle-user"></i> Login</li>
+          /
+          <li class="link" routerLink="/signup">Register</li>
+        </ul>
+      }
     </div>
   </div>
 </section>
