@@ -9,4 +9,15 @@ import { Component, input } from '@angular/core';
 export class HeroRoomDetail{
   roomInfo = input<any>();
   randomIndex = input<number>(0);
+
+  scrollTo(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start', 
+        inline: 'nearest' 
+      });
+    }
+  }
 }

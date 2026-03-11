@@ -101,3 +101,63 @@ ul li:hover::after {
     font-size: 2em;
 }
 
+@media (max-width: 1200px) {
+  .mini_nav {
+    padding: 30px 50px; 
+  }
+  .text h1 {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .intro {
+    height: 50vh; 
+  }
+
+  .text h1 {
+    font-size: 36px; 
+    width: 90vw;
+  }
+
+  .text p {
+    font-size: 14px;
+    padding-inline: 20px;
+  }
+
+  .mini_nav {
+    flex-direction: column; 
+    gap: 30px;
+    padding: 30px 20px;
+    text-align: center;
+  }
+
+  .mini_nav ul {
+    gap: 30px; 
+    padding: 0;
+  }
+
+  ul li a {
+    font-size: 16px;
+  }
+
+  .price_cont {
+    font-size: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .text h1 {
+    font-size: 28px;
+    letter-spacing: 1px;
+  }
+  
+  .mini_nav ul {
+    flex-direction: column; 
+    gap: 15px;
+  }
+}

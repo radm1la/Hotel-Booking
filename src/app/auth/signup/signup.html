@@ -76,7 +76,7 @@
             <input type="text" id="zipcode" formControlName="zipcode" />
           </div>
           <div class="area">
-            <label for="avatar">Avatar URL</label>
+            <label for="avatar">Avatar URL <span class="req">*</span></label>
             <input type="text" id="avatar" formControlName="avatar" />
             @if (hasError('avatar', 'required')) {
               <p class="input-hint"><i class="fa-solid fa-circle-info"></i> Avatar is required.</p>

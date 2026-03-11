@@ -43,3 +43,63 @@ button:hover{
     color: var(--lb);
     cursor: pointer;
 }
+
+@media (max-width: 1400px) {
+  .area {
+    padding: 50px 200px;
+    gap: 60px;
+  }
+}
+
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 80px; 
+    padding: 100px 0 30px 30px;
+  }
+
+  .area {
+    padding: 40px 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  :host {
+    margin-top: 60px; 
+    height: auto;
+    min-height: 100vh;
+  }
+
+  h1 {
+    font-size: 48px; 
+    letter-spacing: 0.1em;
+    word-spacing: 0.1em;
+    padding: 60px 20px 20px 20px;
+    text-align: center;
+  }
+
+  .area {
+    padding: 30px 20px;
+    align-items: center; 
+    text-align: center;
+    gap: 40px;
+  }
+
+  p {
+    font-size: 18px; 
+    line-height: 1.6;
+  }
+
+  button {
+    font-size: 20px;
+    padding: 10px 0;
+  }
+}
+
+@media (max-height: 500px) {
+  :host {
+    height: auto;
+  }
+  h1 {
+    padding-top: 40px;
+  }
+}

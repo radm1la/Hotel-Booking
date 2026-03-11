@@ -121,3 +121,81 @@ button i {
 button:hover i {
   color: var(--lb);
 }
+
+
+@media (max-width: 1400px) {
+  :host {
+    padding: 60px 100px; 
+  }
+  .feat {
+    padding-left: 40px;
+  }
+}
+
+@media (max-width: 1024px) {
+  :host {
+    padding: 40px 50px;
+  }
+  .features_conatiner {
+    gap: 20px;
+  }
+  .field {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  :host {
+    padding: 40px 20px;
+  }
+
+  .features_conatiner {
+    flex-direction: column; 
+    margin-bottom: 30px;
+  }
+
+  .field {
+    width: 100%;
+    padding: 0;
+  }
+
+  .descr {
+    margin-bottom: 40px;
+  }
+
+  .feat {
+    padding-left: 0;
+    border-top: 1px solid #eee;
+    padding-top: 30px;
+  }
+
+  .descr h1 {
+    font-size: 20px;
+    line-height: 1.4;
+  }
+
+  .img {
+    height: 300px; 
+  }
+
+  .images {
+    gap: 10px;
+  }
+
+  .images button {
+    position: absolute; 
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 2;
+    border: none;
+  }
+
+  .images button:first-of-type {
+    left: 10px;
+  }
+
+  .images button:last-of-type {
+    right: 10px;
+  }
+}

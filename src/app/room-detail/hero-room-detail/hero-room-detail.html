@@ -7,8 +7,8 @@
 </section>
 <section class="mini_nav">
   <ul>
-    <li><a href="">DESCRIPTION</a></li>
-    <li><a href="">BOOK ROOM</a></li>
+    <li><a (click)="scrollTo('description-section')">DESCRIPTION</a></li>
+    <li><a (click)="scrollTo('booking-section')">BOOK ROOM</a></li>
   </ul>
   <span class="price_cont"
     >$ <span class="price"> {{ roomInfo().pricePerNight }} </span> PER NIGHT</span
