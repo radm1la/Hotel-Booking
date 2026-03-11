@@ -4,8 +4,7 @@
 }
 
 .header {
-  padding-top: 80px;
-  padding-bottom: 50px;
+  padding: 40px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,6 +15,7 @@
     opacity 1.5s ease-out,
     transform 1.5s cubic-bezier(0.2, 1, 0.3, 1);
   will-change: opacity, transform;
+  text-align: center;
 }
 
 .header i {
@@ -23,6 +23,7 @@
 }
 
 .header h1 {
+  font-size: clamp(28px, 4vw, 48px);
   font-weight: 200;
 }
 
@@ -41,6 +42,7 @@
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
+  padding-inline: 15px;
 }
 
 .carousel-main {
@@ -91,7 +93,7 @@
 }
 
 .card {
-  flex: 0 0 450px;
+ flex: 0 0 calc(100% - 0px); /*cant test it yet*/
   position: relative;
   width: 450px;
   height: 515px;
@@ -260,3 +262,32 @@
   opacity: 1;
 }
 
+@media (min-width: 768px) {
+  .card {
+    flex: 0 0 calc(50% - 10px); 
+  }
+}
+
+@media (min-width: 1135px) {
+  .card {
+    flex: 0 0 calc(33.333% - 14px); 
+  }
+}
+
+@media (max-width: 768px) {
+  .overlay {
+    opacity: 1; 
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    align-items: flex-end;
+    backdrop-filter: none;
+  }
+  
+  .info {
+    transform: translateY(0);
+    padding-bottom: 40px;
+  }
+
+  .info h3 { font-size: 28px; }
+  
+  .nav-btn { display: none; }
+}
